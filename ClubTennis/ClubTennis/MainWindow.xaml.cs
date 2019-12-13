@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubTennis.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,33 @@ namespace ClubTennis
         public MainWindow()
         {
             InitializeComponent();
+
+            Member john = new Member(
+                "john",
+                "Watson",
+                "01",
+                GenderEnum.man,
+                "Washington DC",
+                true);
+
+            Employee marta = new Employee(
+                "marta",
+                "Dayson",
+                "02",
+                GenderEnum.woman,
+                "Paris DC",
+                new BankDetails("1", "2"),
+                1230,
+                DateTime.Now);
+
+            List<People> list = new List<People>();
+
+            list.Add(john);
+            list.Add(marta);
+
+            Data data = new Data();
+            data.Peoples = list;
+            data.WriteData();
         }
     }
 }

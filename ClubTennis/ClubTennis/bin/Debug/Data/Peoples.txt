@@ -1,0 +1,2 @@
+Member;john;Watson;01;man;Washington DC;True
+Employee;marta;Dayson;02;woman;Paris DC;1;2;14/12/2019 00:47:14
