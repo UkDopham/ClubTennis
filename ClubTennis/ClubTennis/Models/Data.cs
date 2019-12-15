@@ -4,14 +4,21 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ClubTennis.Models
 {
     public class Data
     {
-        private const string PATH = "Data/Peoples.txt";
+        private const string PATH = "Data/Peoples.clubtennis"; //CUSTOM extension 
         private List<People> _peoples;
+        private BinaryFormatter _serializer;
 
+        public Data()
+        {
+            this._serializer = new BinaryFormatter();
+        }
         public List<People> Peoples //TODO FOR TEST
         {
             get
@@ -23,11 +30,17 @@ namespace ClubTennis.Models
                 this._peoples = value;
             }
         }
-        public void WriteData()
+        /// <summary>
+        /// Déserialisation des données de la liste de personnne (Lecture persistante)
+        /// </summary>
+        public void LoadData()
         {
             try
             {
-                File.WriteAllLines(PATH, ConvertFromPeopleListToStringArray(this._peoples));
+                Stream stream = new FileStream(PATH, FileMode.Open, FileAccess.Read);
+
+                List<People> people = (List<People>)this._serializer.Deserialize(stream);
+                stream.Close();
             }
             catch(Exception ex)
             {
@@ -35,34 +48,23 @@ namespace ClubTennis.Models
             }
         }
         /// <summary>
-        /// Methode permettant de convertir 
-        /// une liste de données personnes en tableau de string 
+        /// Serialisation des données de la liste de personnne (Ecriture persistante)
         /// </summary>
-        /// <param name="peoples"></param>
-        /// <returns></returns>
-        private string[] ConvertFromPeopleListToStringArray(List<People> peoples) 
-            //On aurait pu se passer du parametre car peoples est une variance d'instance 
-            //mais on sait jamais on pourrait utiliser la methode ailleur
+        public void WriteData()
         {
-            string[] array = new string[peoples.Count];
-
-            for (int i = 0;
-                i < array.Length;
-                i++)
+            try
             {
-                array[i] = peoples[i].ToString();
-            }
+                Stream stream = new FileStream(PATH, FileMode.OpenOrCreate, FileAccess.Write);
 
-            return array;
+                this._serializer.Serialize(stream, this._peoples);
+                stream.Close();
+            }
+            catch(Exception ex)
+            {
+                File.WriteAllText("error.txt", ex.Message); //Pas pour le debug
+            }
         }
-        /// <summary>
-        /// Methode permettant de convertir les données d'une personne en string
-        /// </summary>
-        /// <param name="people"></param>
-        /// <returns></returns>
-        private string ConvertFromPeopleToString(People people)
-        {
-            return people.ToString();
-        }
+
+       
     }
 }

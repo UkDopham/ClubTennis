@@ -12,3 +12,7 @@ D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\ClubTennis.exe
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\ClubTennis.pdb
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\MainWindow.g.cs
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\MainWindow.baml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\LoginUserControl.g.cs
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\LoginUserControl.baml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\App.baml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\ball.png

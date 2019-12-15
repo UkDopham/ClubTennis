@@ -1,1 +1,1 @@
-Impossible de trouver une partie du chemin d'accès 'D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Data\Peoples.txt'.
+Le type 'ClubTennis.Models.BankDetails' dans l'assembly 'ClubTennis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' n'est pas marqué comme sérialisable.

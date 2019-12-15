@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ClubTennis"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="VertBackground" Color="#92c544"/>
+        <SolidColorBrush x:Key="VertClaireBackground" Color="#9cca56"/>
     </Application.Resources>
 </Application>

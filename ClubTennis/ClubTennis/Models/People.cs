@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
+    [Serializable]
     public abstract class People
     {
         private string _firstName;
@@ -13,7 +14,7 @@ namespace ClubTennis.Models
         private string _phoneNumber;
         private GenderEnum _gender;
         private string _adress;
-        
+
         public People(
             string firstName,
             string lastName,

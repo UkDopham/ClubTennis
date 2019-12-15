@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
+    [Serializable]
     public class Member : People
     {
         private bool _hasPaid;
@@ -24,7 +25,7 @@ namespace ClubTennis.Models
 
         public override string ToString()
         {
-            return $"{typeof(Member).Name};{base.ToString()};{this._hasPaid}";
+            return $"{PeopleEnum.Member};{base.ToString()};{this._hasPaid}";
         }
     }
 }

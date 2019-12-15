@@ -1,4 +1,5 @@
 ﻿using ClubTennis.Models;
+using ClubTennis.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,36 +22,40 @@ namespace ClubTennis
     /// </summary>
     public partial class MainWindow : Window
     {
+        public LoginUserControl _loginUserControl;
         public MainWindow()
         {
             InitializeComponent();
+            this._loginUserControl = new LoginUserControl();
+            DataContext = this._loginUserControl;
 
-            Member john = new Member(
-                "john",
-                "Watson",
-                "01",
-                GenderEnum.man,
-                "Washington DC",
-                true);
+            //Member john = new Member(
+            //    "john",
+            //    "Watson",
+            //    "01",
+            //    GenderEnum.man,
+            //    "Washington DC",
+            //    true);
 
-            Employee marta = new Employee(
-                "marta",
-                "Dayson",
-                "02",
-                GenderEnum.woman,
-                "Paris DC",
-                new BankDetails("1", "2"),
-                1230,
-                DateTime.Now);
+            //Administration marta = new Administration(
+            //    "marta",
+            //    "Dayson",
+            //    "02",
+            //    GenderEnum.woman,
+            //    "Paris DC",
+            //    new BankDetails("1", "2"),
+            //    1230,
+            //    DateTime.Now);
 
-            List<People> list = new List<People>();
+            //List<People> list = new List<People>();
 
-            list.Add(john);
-            list.Add(marta);
+            //list.Add(john);
+            //list.Add(marta);
 
-            Data data = new Data();
-            data.Peoples = list;
-            data.WriteData();
+            //Data data = new Data();
+            //data.Peoples = list;
+            //data.WriteData();
+            //data.LoadData();
         }
     }
 }

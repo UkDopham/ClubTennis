@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
-    public class Employee : People
+    [Serializable]
+    public abstract class Employee : People
     {
         private BankDetails _bankDetails;
         private int _salary;
@@ -19,17 +20,17 @@ namespace ClubTennis.Models
             string adress,
             BankDetails bankDetails,
             int salary,
-            DateTime _entryDate) 
+            DateTime entryDate) 
             : base(firstName, lastName, phoneNumber, gender, adress)
         {
             this._bankDetails = bankDetails;
             this._salary = salary;
-            this._entryDate = _entryDate;
+            this._entryDate = entryDate;
         }
 
         public override string ToString()
         {
-            return $"{typeof(Employee).Name};{base.ToString()};{this._bankDetails};{this._entryDate}";
+            return $"{PeopleEnum.Employee};{base.ToString()};{this._bankDetails};{this._entryDate}";
         }
     }
 }
