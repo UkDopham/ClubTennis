@@ -24,6 +24,10 @@ namespace ClubTennis.Views
         {
             InitializeComponent();
         }
-       
+
+        private void LoginButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

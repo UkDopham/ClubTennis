@@ -14,6 +14,7 @@ namespace ClubTennis.Models
         private const string PATH = "Data/Peoples.clubtennis"; //CUSTOM extension 
         private List<People> _peoples;
         private BinaryFormatter _serializer;
+        private List<User> _users; //Liste des utilisateurs qui ont acces aux données
 
         public Data()
         {
