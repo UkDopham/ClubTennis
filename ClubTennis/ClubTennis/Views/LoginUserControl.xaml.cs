@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClubTennis.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,47 @@ namespace ClubTennis.Views
     /// </summary>
     public partial class LoginUserControl : UserControl
     {
+        private Data _data;
         public LoginUserControl()
         {
             InitializeComponent();
+            this._data = new Data();
+            RememberInitialization();
         }
 
-        private void LoginButtonClick(object sender, RoutedEventArgs e)
+        private void RememberInitialization()
         {
+            this._data.LoadRemember();
+            if (!string.IsNullOrEmpty(this._data.Remember))
+            {
+                rememberCheckBox.IsChecked = true;
+            }
+        }
+        private void LoginButtonClick(object sender, RoutedEventArgs e)
+        {           
+            this._data.LoadID();
+            
+            MessageBox.Show(IsCorrectID().ToString());
+            if(IsCorrectID())
+            {
+                
+            }
+        }
 
+        public bool IsCorrectID()
+        {
+            bool isCorrect = false;
+
+            if (this._data.Users != null)
+            {
+                User user = this._data.Users.FirstOrDefault(x => x.Username == UsernameTextBox.Text && x.Password == PasswordBox.Password);
+
+                if (user != null)
+                {
+                    isCorrect = true;
+                }
+            }
+            return isCorrect;
         }
     }
 }

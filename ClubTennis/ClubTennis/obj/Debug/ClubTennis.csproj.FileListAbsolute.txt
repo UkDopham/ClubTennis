@@ -17,3 +17,5 @@ D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\LoginUserControl.b
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\App.baml
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\ball.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\icon.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MenuUserControl.g.cs
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MenuUserControl.baml

@@ -76,7 +76,7 @@
 
                     <TextBlock Grid.Row="2"
                                FontSize="14"
-                               Text="Username"
+                               Text="Password"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontFamily="/ClubTennis;component/Fonts/#Roboto Th"/>
@@ -111,7 +111,8 @@
                                        VerticalAlignment="Center"
                                        Margin="10,0"/>
 
-                            <CheckBox Grid.Column="1"
+                            <CheckBox x:Name="rememberCheckBox"
+                                Grid.Column="1"
                                 VerticalAlignment="Center"/>
                             
                         </Grid>
