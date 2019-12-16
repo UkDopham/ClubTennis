@@ -9,10 +9,11 @@
     <Grid Background="{StaticResource VertClaireBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>        
 
+        <!-- Login Box -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -23,12 +24,10 @@
             <Grid Grid.Column="1"
                   Background="White">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
+                <!--Icon-->
                 <Grid Grid.Row="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -45,30 +44,110 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
-                               FontSize="20"/>
+                               FontSize="22"/>
+                </Grid>
+                <!--Login -->
+                <Grid Grid.Row="1">
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               FontSize="14"
+                               Text="Username"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontFamily="/ClubTennis;component/Fonts/#Roboto Th"/>
+                    
+                    <TextBox x:Name="UsernameTextBox"
+                             Grid.Row="1"
+                             TextAlignment="Center"
+                             FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
+                             FontSize="12"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             Margin="100,10"/>
+
+                    <TextBlock Grid.Row="2"
+                               FontSize="14"
+                               Text="Username"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontFamily="/ClubTennis;component/Fonts/#Roboto Th"/>
+                    
+                    <PasswordBox x:Name="PasswordBox"
+                                 Grid.Row="3"
+                                 PasswordChar="*"
+                                 MaxLength="30"
+                                 FontSize="12"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 Margin="100,10"/>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0"
+                              HorizontalAlignment="Right">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" 
+                                Text="Remember my ID"
+                                       FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
+                                       FontSize="11"
+                                       VerticalAlignment="Center"
+                                       Margin="10,0"/>
+
+                            <CheckBox Grid.Column="1"
+                                VerticalAlignment="Center"/>
+                            
+                        </Grid>
+
+                        <Button Grid.Column="1"
+                                Margin="10"
+                                Background="{StaticResource VertClaireBackground}"
+                                Content="LOGIN"
+                                FontSize="14"
+                                FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
+                                Foreground="White"
+                                BorderThickness="0"/>
+
+                    </Grid>
+                    
+
+                    <Button Grid.Row="5"
+                            Content="Forgot identifying information"
+                            FontSize="10"
+                            Foreground="{StaticResource VertClaireBackground}"
+                            Background="White"
+                            BorderBrush="White"
+                            BorderThickness="0"
+                            Margin="75,3"
+                            FontStyle="Italic"/>
                 </Grid>
 
-                <TextBox Grid.Row="1"
-                         Text="USERNAME"
-                         TextAlignment="Center"                         
-                         FontSize="13"
-                         FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
-                         Margin="50,10"/>
-
-                <TextBox Grid.Row="2"
-                         Text="PASSWORD"
-                         TextAlignment="Center"
-                         FontSize="13"
-                         FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
-                         Margin="50,10"/>
-
-                <Button Grid.Row="3"
-                        Margin="100,10"
-                        Background="{StaticResource VertClaireBackground}"
-                        Content="LOGIN"
-                        FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
-                        BorderThickness="0"/>
             </Grid>
         </Grid>
+
+        <!-- Signature-->
+        <TextBlock Grid.Row="2"
+                   Text="Fait par Alexandre DO PHAM"
+                   VerticalAlignment="Bottom"
+                   FontSize="11"
+                   Margin="5,3"
+                   Foreground="White"/>
     </Grid>
 </UserControl>
