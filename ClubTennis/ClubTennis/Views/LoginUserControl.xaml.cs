@@ -22,6 +22,8 @@ namespace ClubTennis.Views
     public partial class LoginUserControl : UserControl
     {
         private Data _data;
+        private MenuUserControl _menuUserControl;
+        private User _user;
         public LoginUserControl()
         {
             InitializeComponent();
@@ -35,16 +37,24 @@ namespace ClubTennis.Views
             if (!string.IsNullOrEmpty(this._data.Remember))
             {
                 rememberCheckBox.IsChecked = true;
+                UsernameTextBox.Text = this._data.Remember;
             }
         }
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {           
             this._data.LoadID();
-            
-            MessageBox.Show(IsCorrectID().ToString());
-            if(IsCorrectID())
+            if (IsCorrectID())
             {
-                
+                Window fenetre = Window.GetWindow(this);
+                fenetre.DataContext = new MenuUserControl(this._data, this._user);
+
+                this._data.Remember = (bool)rememberCheckBox.IsChecked ? UsernameTextBox.Text : string.Empty;
+                this._data.WriteRemember();
+            }
+            else
+            {
+                UsernameTextBox.Foreground = new SolidColorBrush(Colors.Red);
+                PasswordBox.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
 
@@ -54,14 +64,33 @@ namespace ClubTennis.Views
 
             if (this._data.Users != null)
             {
-                User user = this._data.Users.FirstOrDefault(x => x.Username == UsernameTextBox.Text && x.Password == PasswordBox.Password);
+                this._user = this._data.Users.FirstOrDefault(x => x.Username == UsernameTextBox.Text && x.Password == PasswordBox.Password);
 
-                if (user != null)
+                if (this._user != null)
                 {
                     isCorrect = true;
                 }
             }
             return isCorrect;
         }
+
+        private void TextBoxGotFocus(object sender, RoutedEventArgs e)
+        {
+            UsernameTextBox.Foreground = new SolidColorBrush(Colors.Black);
+            PasswordBox.Foreground = new SolidColorBrush(Colors.Black);
+        }
+
+        private void FermerButtonClick(object sender, RoutedEventArgs e)
+        {
+            Window fenetre = Window.GetWindow(this);
+            fenetre.Close();
+        }
+
+        private void BorderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Window fenetre = Window.GetWindow(this);
+            fenetre.DragMove();
+        }
+
     }
 }

@@ -6,5 +6,6 @@
     <Application.Resources>
         <SolidColorBrush x:Key="VertBackground" Color="#92c544"/>
         <SolidColorBrush x:Key="VertClaireBackground" Color="#9cca56"/>
+        <SolidColorBrush x:Key="GrisBackground" Color="#ececec"/>
     </Application.Resources>
 </Application>

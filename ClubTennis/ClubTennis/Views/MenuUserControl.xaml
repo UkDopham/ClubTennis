@@ -5,8 +5,212 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClubTennis.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="720" 
+             d:DesignWidth="1280">
+    <Grid Background="{StaticResource GrisBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <!--Top bar-->
+        <Grid Grid.Row="0"
+              MouseLeftButtonDown="BorderMouseLeftButtonDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Logo-->
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="0"
+                        Margin="0,0,1,1"
+                        Background="White">
+
+                <Image Source="pack://siteoforigin:,,,/Resources/balllow.png"
+                       Margin="5"/>
+
+                <TextBlock Text="TCM"
+                               FontSize="25"
+                               Foreground="{StaticResource VertClaireBackground}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="5"/>
+
+                <TextBlock Text="2020"
+                               FontSize="25"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="5"/>
+            </StackPanel>
+
+            <!--Menu ON/OFF-->
+            <Button Grid.Column="1"
+                    Margin="0,0,1,1"
+                    Background="White"
+                    BorderThickness="0"
+                    Click="OnOffButtonClick">
+                <StackPanel Orientation="Horizontal">
+                    
+                    <Image Source="pack://siteoforigin:,,,/Resources/list (1).png"
+                           Margin="5,0"/>
+                    
+                    <TextBlock Text="Menu"
+                               FontSize="15"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                    
+                </StackPanel>
+                
+            </Button>
+
+            <Grid Grid.Column="2"
+                  Background="White"
+                  Margin="0,0,1,1"/>
+
+            <!--Help button-->
+            <Button Grid.Column="3"
+                    Margin="0,0,1,1"
+                    Background="White"
+                    BorderThickness="0">
+                <Image Source="pack://siteoforigin:,,,/Resources/question-mark.png"/>
+            </Button>
+
+            <!--Profil Button-->
+            <Button Grid.Column="4"
+                    Margin="0,0,1,1"
+                    Background="White"
+                    BorderThickness="0">
+                <StackPanel Orientation="Horizontal">
+                    
+                    <Image Source="pack://siteoforigin:,,,/Resources/user.png"/>
+                    
+                    <TextBlock Text="{Binding Username}"
+                               VerticalAlignment="Center"
+                               Margin="5"/>
+                    
+                </StackPanel>
+            </Button>
             
+            <!--Cancel Button-->
+            <Button Grid.Column="5"
+                    Margin="0,0,0,1"
+                    Background="White"
+                    BorderThickness="0"
+                    Click="FermerButtonClick">
+                <Image Source="pack://siteoforigin:,,,/Resources/error.png"/>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="27*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Side Menu-->
+            <Grid x:Name="SideMenuGrid" 
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      Margin="0,1"
+                      Background="Purple">
+                    
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="0,1"
+                      Background="Green">
+
+                </Grid>
+
+                <Grid Grid.Row="2"
+                      Margin="0,1"
+                      Background="Red">
+
+                </Grid>
+
+                <Grid Grid.Row="3"
+                      Margin="0,1"
+                      Background="Yellow">
+
+                </Grid>
+
+                <Grid Grid.Row="4"
+                      Margin="0,1"
+                      Background="Orange">
+
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+
+                <!--Stats Grid-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0"
+                          Margin="20,0,20,20"
+                          Background="Blue">
+                        
+                    </Grid>
+
+                    <Grid Grid.Column="1"
+                           Margin="20,0,20,20"
+                          Background="Green">
+
+                    </Grid>
+
+                    <Grid Grid.Column="2"
+                           Margin="20,0,20,20"
+                          Background="Yellow">
+
+                    </Grid>
+
+                    <Grid Grid.Column="3"
+                           Margin="20,0,20,20"
+                          Background="Orange">
+
+                    </Grid>
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <ContentControl Content="{Binding}"/>
+                </Grid>
+                
+            </Grid>
+        </Grid>
+
+        
     </Grid>
 </UserControl>

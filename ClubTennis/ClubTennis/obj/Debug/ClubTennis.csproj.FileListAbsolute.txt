@@ -19,3 +19,11 @@ D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\ball.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\icon.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MenuUserControl.g.cs
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MenuUserControl.baml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\list.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\list (1).png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\balllow.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\question-mark.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\error.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\user.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MemberUserControl.g.cs
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MemberUserControl.baml
