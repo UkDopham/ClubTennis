@@ -132,17 +132,55 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0"
-                      Margin="0,1"
-                      Background="Purple">
+                <Button x:Name="MemberButton"
+                        Grid.Row="0"
+                        Margin="0,1"
+                        Background="White"
+                        BorderThickness="0"
+                        Click="MemberButtonClick">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" 
+                            Source="pack://siteoforigin:,,,/Resources/restaurant-membership-card-tool (3).png"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Membres"
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource VertClaireBackground}"
+                                   Margin="5"
+                                   FontSize="15"/>
+                    </Grid>                   
                     
-                </Grid>
+                </Button>
 
-                <Grid Grid.Row="1"
-                      Margin="0,1"
-                      Background="Green">
+                <Button x:Name="TournamentButton"
+                        Grid.Row="1"
+                        Margin="0,1"
+                        Background="White"
+                        BorderThickness="0"
+                        Click="TournamentButtonClick">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                </Grid>
+                        <Image Grid.Column="0" 
+                            Source="pack://siteoforigin:,,,/Resources/trophy.png"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Tournois"
+                                   VerticalAlignment="Center"
+                                   Foreground="{StaticResource VertClaireBackground}"
+                                   Margin="5"
+                                   FontSize="15"/>
+                    </Grid>
+
+                </Button>
 
                 <Grid Grid.Row="2"
                       Margin="0,1"

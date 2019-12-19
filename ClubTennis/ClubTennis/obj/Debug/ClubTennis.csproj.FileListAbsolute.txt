@@ -27,3 +27,7 @@ D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\error.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\user.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MemberUserControl.g.cs
 D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\MemberUserControl.baml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\restaurant-membership-card-tool (3).png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\trophy.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\TournamentUserControl.g.cs
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\TournamentUserControl.baml

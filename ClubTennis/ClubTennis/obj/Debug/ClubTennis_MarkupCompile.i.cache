@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Programmation\Tennis\ClubTennis\ClubTennis\App.xaml
-4-269082485
+51946822985
 
-221568528393
+23256075072
 151397803362
-MainWindow.xaml;Views\LoginUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;
+MainWindow.xaml;Views\LoginUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;Views\TournamentUserControl.xaml;
 
 True
 

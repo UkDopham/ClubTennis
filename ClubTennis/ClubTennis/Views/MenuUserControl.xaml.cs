@@ -22,7 +22,9 @@ namespace ClubTennis.Views
     public partial class MenuUserControl : UserControl
     {
         private string _username;
-
+        private User _user;
+        private List<Button> _buttons;
+        private SolidColorBrush _yellowBrush;
         public string Username
         {
             get
@@ -33,11 +35,28 @@ namespace ClubTennis.Views
         public MenuUserControl(Data data, User user)
         {
             InitializeComponent();
+            InitializationButtons();
             this._username = user.Username;
+            this._user = user;
             SideMenuGrid.Visibility = Visibility.Hidden;
+
+            this._yellowBrush = new SolidColorBrush(Color.FromRgb(255, 233, 0));
             DataContext = new MemberUserControl();
+            MemberButton.Background = this._yellowBrush;
         }
 
+        private void InitializationButtons()
+        {
+            this._buttons = new List<Button>();
+            this._buttons.Add(MemberButton);
+            this._buttons.Add(TournamentButton);
+        }
+
+        private void UnselectedButtonsColorization(Button button)
+        {
+            List<Button> unselectedButtons = this._buttons.Where(x => !x.Equals(button)).ToList();
+            unselectedButtons.ForEach(x => x.Background = new SolidColorBrush(Colors.White));
+        }
         private void BorderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Window fenetre = Window.GetWindow(this);
@@ -53,6 +72,22 @@ namespace ClubTennis.Views
         private void OnOffButtonClick(object sender, RoutedEventArgs e)
         {
             SideMenuGrid.Visibility = SideMenuGrid.IsVisible ? Visibility.Hidden : Visibility.Visible;
+        }
+
+        private void MemberButtonClick(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MemberUserControl();
+
+            UnselectedButtonsColorization(MemberButton);
+            MemberButton.Background = this._yellowBrush;
+        }
+
+        private void TournamentButtonClick(object sender, RoutedEventArgs e)
+        {
+            DataContext = new TournamentUserControl();
+
+             UnselectedButtonsColorization(TournamentButton);
+            TournamentButton.Background = this._yellowBrush;
         }
     }
 }
