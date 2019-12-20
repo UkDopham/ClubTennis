@@ -25,6 +25,15 @@ namespace ClubTennis.Views
         private User _user;
         private List<Button> _buttons;
         private SolidColorBrush _yellowBrush;
+        private Save _save;
+
+        public int NumberMembers
+        {
+            get
+            {
+                return this._save.Peoples.Count;
+            }
+        }
         public string Username
         {
             get
@@ -32,10 +41,11 @@ namespace ClubTennis.Views
                 return this._username;
             }
         }
-        public MenuUserControl(Data data, User user)
+        public MenuUserControl(Save save, User user)
         {
             InitializeComponent();
             InitializationButtons();
+            this._save = save;
             this._username = user.Username;
             this._user = user;
             SideMenuGrid.Visibility = Visibility.Hidden;

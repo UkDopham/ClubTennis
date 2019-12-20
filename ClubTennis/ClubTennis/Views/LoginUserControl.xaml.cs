@@ -46,7 +46,9 @@ namespace ClubTennis.Views
             if (IsCorrectID())
             {
                 Window fenetre = Window.GetWindow(this);
-                fenetre.DataContext = new MenuUserControl(this._data, this._user);
+
+                Save save = this._data.Saves.FirstOrDefault(x => x.Users.FirstOrDefault(y => y.Username == UsernameTextBox.Text) != null);
+                fenetre.DataContext = new MenuUserControl(save, this._user);
 
                 this._data.Remember = (bool)rememberCheckBox.IsChecked ? UsernameTextBox.Text : string.Empty;
                 this._data.WriteRemember();

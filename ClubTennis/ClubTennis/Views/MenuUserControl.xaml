@@ -220,7 +220,22 @@
                     <Grid Grid.Column="0"
                           Margin="20,0,20,20"
                           Background="Blue">
-                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Membres du club :"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Margin="5"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding NumberMembers}"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Margin="5"/>
                     </Grid>
 
                     <Grid Grid.Column="1"

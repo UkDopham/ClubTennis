@@ -21,6 +21,17 @@ namespace ClubTennis.Models
         private List<string> _saveTitles;
         private BinaryFormatter _serializer;
 
+        public List<Save> Saves
+        {
+            get
+            {
+                return this._saves;
+            }
+            set
+            {
+                this._saves = value;
+            }
+        }
         public string Remember
         {
             get
