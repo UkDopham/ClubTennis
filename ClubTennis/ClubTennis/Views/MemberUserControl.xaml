@@ -7,7 +7,185 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800">
-    <Grid Background="Red">
-            
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+
+        <!--TYPE HEADER -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1"
+                    BorderThickness="0"
+                    Margin="1,0"
+                    Background="{StaticResource VertButtonType}"
+                    Click="MemberButtonClick">
+                <TextBlock Text="Membre"
+                           Foreground="White"
+                           FontSize="15"/>
+            </Button>
+
+            <Button Grid.Column="0"
+                    BorderThickness="0"
+                    Margin="1,0"
+                    Background="{StaticResource VertButtonType}"
+                    Click="EmployeeButtonClick">
+                <TextBlock Text="Salarié"
+                           Foreground="White"
+                           FontSize="15"/>
+            </Button>
+
+            <Grid Grid.Column="2"
+                  Margin="1,0"
+                  Background="{StaticResource VertButtonType}"/>
+
+            <Button Background="{StaticResource VertButtonType}"
+                    BorderThickness="0"
+                    Grid.Column="3"
+                    Margin="1,0">
+                <StackPanel Orientation="Horizontal" 
+                            Margin="5">
+                    <Image Source="pack://siteoforigin:,,,/Resources/plus.png"/>
+                    <TextBlock Text="Ajouter une personne"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               Margin="2"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <!--FILTER-->
+        <Grid Grid.Row="1"
+              Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--DELET-->
+            <Button Grid.Column="0"
+                    Background="{StaticResource RedBackground}"
+                    BorderThickness="0"
+                    Margin="5">
+                <Image Source="pack://siteoforigin:,,,/Resources/clear.png"
+                       Margin="3"/>
+            </Button>
+
+            <Button x:Name="AlfabetButton"
+                    Grid.Column="3"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    Margin="6">
+                <Image Source="pack://siteoforigin:,,,/Resources/font-symbol-of-letter-a.png"/>
+            </Button>
+
+            <!--GENDER-->
+            <ComboBox x:Name="GenderComboBox" 
+                    Grid.Column="4"
+                      Margin="5"
+                      VerticalContentAlignment="Center"
+                      HorizontalContentAlignment="Center">
+                <ComboBoxItem IsSelected="True">
+                    Tous
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Homme
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Femme
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Autre
+                </ComboBoxItem>
+            </ComboBox>
+
+            <!--LOISIRS / COMPETITION -->
+            <ComboBox x:Name="LoisirComboBox"
+                        Grid.Column="6"                      
+                      VerticalContentAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      Margin="5">
+                <ComboBoxItem IsSelected="True">
+                    Tous
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Loisir
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Compétition
+                </ComboBoxItem>
+            </ComboBox>
+
+            <!--CLASSEMENT-->
+            <Button x:Name="ClassementButton"
+                    Grid.Column="2"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    Margin="6">
+                <Image Source="pack://siteoforigin:,,,/Resources/black.png"/>
+            </Button>
+
+            <!-- PAYMENT-->
+            <ComboBox x:Name="PaymentComboBox"
+                      Grid.Column="5"
+                      Margin="5"                      
+                      VerticalContentAlignment="Center"
+                      HorizontalContentAlignment="Center">
+                <ComboBoxItem IsSelected="True">
+                    Tous
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    à jour
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Retard
+                </ComboBoxItem>
+            </ComboBox>
+
+            <!--SEARCHBAR-->
+            <Border Grid.Column="7" 
+                    Margin="5"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="SearchTextBox"
+                         Grid.Column="0"
+                         BorderThickness="0"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Center"/>
+                    <Button Grid.Column="1" 
+                            Margin="2"
+                            BorderThickness="0"
+                            Background="Transparent">
+                        <Image Source="pack://siteoforigin:,,,/Resources/magnifying-glass.png"/>
+                    </Button>
+
+                </Grid>
+            </Border>
+
+        </Grid>
+        <!--CONTENT-->
+        <ContentControl Grid.Row="2"
+                        Content="{Binding SelectedUserControl}"/>        
     </Grid>
 </UserControl>

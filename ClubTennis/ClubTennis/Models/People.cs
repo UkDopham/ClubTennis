@@ -15,6 +15,45 @@ namespace ClubTennis.Models
         private GenderEnum _gender;
         private string _adress;
 
+        public string FirstName
+        {
+            get
+            {
+                return this._firstName;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return this._lastName;
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get
+            {
+                return this._phoneNumber;
+            }
+        }
+
+        public string Adress
+        {
+            get
+            {
+                return this._adress;
+            }
+        }
+
+        public GenderEnum Gender
+        {
+            get
+            {
+                return this._gender;
+            }
+        }
         public People(
             string firstName,
             string lastName,
@@ -32,6 +71,11 @@ namespace ClubTennis.Models
         public override string ToString()
         {
             return $"{this._firstName};{this._lastName};{this._phoneNumber};{this._gender};{this._adress}";
+        }
+
+        public virtual string GetType()
+        {
+            return "Personne";
         }
     }
 }

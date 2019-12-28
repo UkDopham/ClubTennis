@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ClubTennis.Models;
+using ClubTennis.ViewModels;
+using ClubTennis.Views.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +21,36 @@ namespace ClubTennis.Views
     /// <summary>
     /// Logique d'interaction pour MemberUserControl.xaml
     /// </summary>
-    public partial class MemberUserControl : UserControl
+    public partial class MemberUserControl : UserControl, ISave
     {
-        public MemberUserControl()
+        private MemberVM _memberVM;
+        private Save _save;
+
+        public MemberVM MemberVM
         {
+            get
+            {
+                return this._memberVM;
+            }
+        }
+        public MemberUserControl(Save save)
+        {
+            this._memberVM = new MemberVM();
+            this._save = save;
             InitializeComponent();
+            DataContext = this._memberVM;
+        }
+
+        public Save Save => this._save;
+
+        private void EmployeeButtonClick(object sender, RoutedEventArgs e)
+        {
+            this._memberVM.SelectedUserControl = new EmployeeListUserControl();
+        }
+
+        private void MemberButtonClick(object sender, RoutedEventArgs e)
+        {
+            this._memberVM.SelectedUserControl = new MemberListUserControl(this._save); 
         }
     }
 }

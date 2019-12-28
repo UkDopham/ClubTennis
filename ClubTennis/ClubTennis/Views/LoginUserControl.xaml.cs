@@ -29,6 +29,7 @@ namespace ClubTennis.Views
             InitializeComponent();
             this._data = new Data();
             RememberInitialization();
+            this._data.Load();
         }
 
         private void RememberInitialization()
@@ -46,7 +47,7 @@ namespace ClubTennis.Views
             if (IsCorrectID())
             {
                 Window fenetre = Window.GetWindow(this);
-
+                
                 Save save = this._data.Saves.FirstOrDefault(x => x.Users.FirstOrDefault(y => y.Username == UsernameTextBox.Text) != null);
                 fenetre.DataContext = new MenuUserControl(save, this._user);
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClubTennis.Models;
+using ClubTennis.Views.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,15 @@ namespace ClubTennis.Views
     /// <summary>
     /// Logique d'interaction pour TournamentUserControl.xaml
     /// </summary>
-    public partial class TournamentUserControl : UserControl
+    public partial class TournamentUserControl : UserControl, ISave
     {
-        public TournamentUserControl()
+        private Save _save;
+        public TournamentUserControl(Save save)
         {
+            this._save = save;
             InitializeComponent();
         }
+
+        public Save Save => this._save;
     }
 }

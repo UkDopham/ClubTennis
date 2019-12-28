@@ -27,13 +27,16 @@ namespace ClubTennis.Views
         private SolidColorBrush _yellowBrush;
         private Save _save;
 
-        public int NumberMembers
+        private MemberUserControl _memberUserControl;
+
+        public MemberUserControl MemberUserControl
         {
             get
             {
-                return this._save.Peoples.Count;
+                return this._memberUserControl;
             }
         }
+        
         public string Username
         {
             get
@@ -51,7 +54,7 @@ namespace ClubTennis.Views
             SideMenuGrid.Visibility = Visibility.Hidden;
 
             this._yellowBrush = new SolidColorBrush(Color.FromRgb(255, 233, 0));
-            DataContext = new MemberUserControl();
+            DataContext = new MemberUserControl(this._save);
             MemberButton.Background = this._yellowBrush;
         }
 
@@ -86,7 +89,8 @@ namespace ClubTennis.Views
 
         private void MemberButtonClick(object sender, RoutedEventArgs e)
         {
-            DataContext = new MemberUserControl();
+            this._memberUserControl = new MemberUserControl(this._save);
+            DataContext = this._memberUserControl;
 
             UnselectedButtonsColorization(MemberButton);
             MemberButton.Background = this._yellowBrush;
@@ -94,9 +98,9 @@ namespace ClubTennis.Views
 
         private void TournamentButtonClick(object sender, RoutedEventArgs e)
         {
-            DataContext = new TournamentUserControl();
+            DataContext = new TournamentUserControl(this._save);
 
-             UnselectedButtonsColorization(TournamentButton);
+            UnselectedButtonsColorization(TournamentButton);
             TournamentButton.Background = this._yellowBrush;
         }
     }

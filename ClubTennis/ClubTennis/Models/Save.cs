@@ -50,7 +50,7 @@ namespace ClubTennis.Models
         }
         public string GetPath()
         {
-            return $"{PATH}{this._club.Name}.club"; //CUSTOM extension 
+            return $"{PATH}{this._club.Name}{ExtensionHelper.GetExtension()}"; //CUSTOM extension 
         }
 
     }

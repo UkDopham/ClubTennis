@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\
 ClubTennis
 none
 false
 DEBUG;TRACE
-D:\Programmation\Tennis\ClubTennis\ClubTennis\App.xaml
-51946822985
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\App.xaml
+7563657018
 
-23256075072
+30-1819782465
 151397803362
-MainWindow.xaml;Views\LoginUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;Views\TournamentUserControl.xaml;
+MainWindow.xaml;Views\EmployeeListUserControl.xaml;Views\LoginUserControl.xaml;Views\MemberListUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;Views\TournamentUserControl.xaml;
 
 True
 

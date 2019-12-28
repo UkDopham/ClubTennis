@@ -7,6 +7,9 @@
         <SolidColorBrush x:Key="VertBackground" Color="#92c544"/>
         <SolidColorBrush x:Key="VertClaireBackground" Color="#9cca56"/>
         <SolidColorBrush x:Key="GrisBackground" Color="#ececec"/>
+        <SolidColorBrush x:Key="GrisClaireBackground" Color="#f1f1f1"/>
+        <SolidColorBrush x:Key="RedBackground" Color="#f6546a"/>
         <SolidColorBrush x:Key="JauneTennis" Color="#ffe900"/>
+        <SolidColorBrush x:Key="VertButtonType" Color="#5ac18e"/>
     </Application.Resources>
 </Application>

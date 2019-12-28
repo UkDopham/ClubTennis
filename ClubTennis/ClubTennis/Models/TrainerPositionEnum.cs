@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
+    [Serializable]
     public enum TrainerPositionEnum
     {
         independent,

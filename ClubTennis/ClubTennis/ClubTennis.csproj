@@ -57,10 +57,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ExtensionHelper.cs" />
     <Compile Include="Models\Save.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\CustomCheckBox.cs" />
+    <Compile Include="ViewModels\MemberVM.cs" />
+    <Compile Include="ViewModels\ObservableObject.cs" />
+    <Compile Include="Views\EmployeeListUserControl.xaml.cs">
+      <DependentUpon>EmployeeListUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Interfaces\ISave.cs" />
     <Compile Include="Views\LoginUserControl.xaml.cs">
       <DependentUpon>LoginUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemberListUserControl.xaml.cs">
+      <DependentUpon>MemberListUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MemberUserControl.xaml.cs">
       <DependentUpon>MemberUserControl.xaml</DependentUpon>
@@ -91,7 +102,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EmployeeListUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MemberListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,6 +160,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Interfaces\" />
     <Folder Include="Sounds\" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +210,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trophy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifying-glass.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\font-symbol-of-letter-a.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

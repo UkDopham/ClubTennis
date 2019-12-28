@@ -7,10 +7,21 @@ using System.Threading.Tasks;
 namespace ClubTennis.Models
 {
     [Serializable]
-    public class Member : People
+    public class Member : People, IComparable<Member>
     {
         private bool _hasPaid;
 
+        public bool HasPaid
+        {
+            get
+            {
+                return this._hasPaid;
+            }
+            set
+            {
+                this._hasPaid = value;
+            }
+        }
         public Member(
             string firstName,
             string lastName,
@@ -26,6 +37,16 @@ namespace ClubTennis.Models
         public override string ToString()
         {
             return $"{PeopleEnum.Member};{base.ToString()};{this._hasPaid}";
+        }
+
+        public override string GetType()
+        {
+            return "Membre";
+        }
+
+        public int CompareTo(Member other)
+        {
+            return string.Compare(this.LastName, other.LastName);
         }
     }
 }

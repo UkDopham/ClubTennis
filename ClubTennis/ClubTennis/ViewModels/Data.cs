@@ -11,9 +11,9 @@ namespace ClubTennis.Models
 {
     public class Data
     {
-        private const string SAVEIDPATH = "Data/remember.club";
-        private const string PATH = "Data/saves.club";
-        private const string PASSWORDPATH = "Data/passwords.club";
+        private string SAVEIDPATH = $"Data/remember{ExtensionHelper.GetExtension()}";
+        private string PATH = $"Data/saves{ExtensionHelper.GetExtension()}";
+        private string PASSWORDPATH = $"Data/passwords{ExtensionHelper.GetExtension()}";
 
         private string _remember;
         private List<User> _users;
@@ -57,6 +57,7 @@ namespace ClubTennis.Models
         public Data()
         {
             this._serializer = new BinaryFormatter();
+            this._saves = new List<Save>();
         }
       
         /// <summary>
@@ -140,8 +141,9 @@ namespace ClubTennis.Models
                 i < this._saveTitles.Count;
                 i++)
             {
-                Stream stream = new FileStream(this._saveTitles[i], FileMode.Open, FileAccess.Read);
+                Stream stream = new FileStream($"Data/{this._saveTitles[i]}{ExtensionHelper.GetExtension()}", FileMode.Open, FileAccess.Read);
                 Save save = (Save)this._serializer.Deserialize(stream);
+                this._saves.Add(save);
                 stream.Close();
             }
         }

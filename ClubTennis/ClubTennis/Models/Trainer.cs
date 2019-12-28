@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
+    [Serializable]
     public class Trainer : Employee
     {
         private TrainerPositionEnum _position; //TODO ASK FOR INFORMATION

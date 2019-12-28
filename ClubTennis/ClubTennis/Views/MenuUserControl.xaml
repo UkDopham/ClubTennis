@@ -232,7 +232,7 @@
                                    Margin="5"/>
 
                         <TextBlock Grid.Column="1"
-                                   Text="{Binding NumberMembers}"
+                                   Text="{Binding Save.Peoples.Count}"
                                    VerticalAlignment="Center"
                                    FontSize="14"
                                    Margin="5"/>

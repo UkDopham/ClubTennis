@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" 
              d:DesignWidth="1280">
-    <Grid Background="{StaticResource VertClaireBackground}"
+    <Grid Background="{StaticResource VertButtonType}"
           MouseLeftButtonDown="BorderMouseLeftButtonDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -138,7 +138,7 @@
 
                         <Button Grid.Column="1"
                                 Margin="10"
-                                Background="{StaticResource VertClaireBackground}"
+                                Background="{StaticResource VertButtonType}"
                                 Content="LOGIN"
                                 FontSize="14"
                                 FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
