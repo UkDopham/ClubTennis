@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClubTennis.Models
+namespace ClubTennis.Views
 {
-    public enum GenderEnum
+    public enum LoisirEnum
     {
         all,
-        man,
-        woman,
-        other,
+        loisir,
+        competition,
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
-    public enum GenderEnum
+    public abstract class Filter
     {
-        all,
-        man,
-        woman,
-        other,
+        public virtual List<People> Order(List<People> peoples)
+        {
+            return new List<People>();
+        }
     }
 }

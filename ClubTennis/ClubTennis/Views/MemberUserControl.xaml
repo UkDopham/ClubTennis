@@ -23,7 +23,8 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1"
+            <Button x:Name="MemberButton"
+                    Grid.Column="1"
                     BorderThickness="0"
                     Margin="1,0"
                     Background="{StaticResource VertButtonType}"
@@ -33,7 +34,8 @@
                            FontSize="15"/>
             </Button>
 
-            <Button Grid.Column="0"
+            <Button x:Name="EmployeeButton"
+                    Grid.Column="0"
                     BorderThickness="0"
                     Margin="1,0"
                     Background="{StaticResource VertButtonType}"
@@ -90,8 +92,10 @@
                     Grid.Column="3"
                     BorderThickness="0"
                     Background="Transparent"
-                    Margin="6">
-                <Image Source="pack://siteoforigin:,,,/Resources/font-symbol-of-letter-a.png"/>
+                    Margin="6"
+                    Click="AlfabetButtonClick">
+                <Image x:Name="AlfabetImage"
+                       Source="pack://siteoforigin:,,,/Resources/font-symbol-of-letter-a.png"/>
             </Button>
 
             <!--GENDER-->
@@ -99,7 +103,8 @@
                     Grid.Column="4"
                       Margin="5"
                       VerticalContentAlignment="Center"
-                      HorizontalContentAlignment="Center">
+                      HorizontalContentAlignment="Center"
+                      SelectionChanged="GenderComboBoxSelectionChanged">
                 <ComboBoxItem IsSelected="True">
                     Tous
                 </ComboBoxItem>
@@ -119,7 +124,8 @@
                         Grid.Column="6"                      
                       VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
-                      Margin="5">
+                      Margin="5"
+                      SelectionChanged="LoisirComboBoxSelectionChanged">
                 <ComboBoxItem IsSelected="True">
                     Tous
                 </ComboBoxItem>
@@ -136,7 +142,8 @@
                     Grid.Column="2"
                     BorderThickness="0"
                     Background="Transparent"
-                    Margin="6">
+                    Margin="6"
+                    Click="ClassementButtonClick">
                 <Image Source="pack://siteoforigin:,,,/Resources/black.png"/>
             </Button>
 
@@ -145,7 +152,8 @@
                       Grid.Column="5"
                       Margin="5"                      
                       VerticalContentAlignment="Center"
-                      HorizontalContentAlignment="Center">
+                      HorizontalContentAlignment="Center"
+                      SelectionChanged="PaymentComboBoxSelectionChanged">
                 <ComboBoxItem IsSelected="True">
                     Tous
                 </ComboBoxItem>

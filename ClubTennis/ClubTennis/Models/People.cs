@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClubTennis.Models
 {
     [Serializable]
-    public abstract class People
+    public abstract class People : IComparable<People>
     {
         private string _firstName;
         private string _lastName;
@@ -76,6 +76,11 @@ namespace ClubTennis.Models
         public virtual string GetType()
         {
             return "Personne";
+        }
+
+        public int CompareTo(People other)
+        {
+            return string.Compare(this.LastName, other.LastName);
         }
     }
 }

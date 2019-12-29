@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
-    public enum GenderEnum
+    public enum SortEnum
     {
-        all,
-        man,
-        woman,
-        other,
+        none,
+        alfabet,
+        competition,
     }
 }

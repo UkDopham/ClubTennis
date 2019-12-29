@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
-    public enum GenderEnum
+    public enum PaymentEnum
     {
         all,
-        man,
-        woman,
-        other,
+        paid,
+        late,
     }
 }

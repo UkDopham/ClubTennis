@@ -57,8 +57,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Filters\AlfabetFilter.cs" />
     <Compile Include="Models\ExtensionHelper.cs" />
+    <Compile Include="Models\Filters\CompetitionFilter.cs" />
+    <Compile Include="Models\Filters\DoCompetitonFilter.cs" />
+    <Compile Include="Models\Filters\Filter.cs" />
+    <Compile Include="Models\Filters\GenderFilterMale.cs" />
+    <Compile Include="Models\Filters\GenderFilterOther.cs" />
+    <Compile Include="Models\Filters\GenderFilterWoman.cs" />
+    <Compile Include="Models\Filters\LateFilter.cs" />
+    <Compile Include="Models\Filters\LoisirFilter.cs" />
+    <Compile Include="Models\Filters\PaidFilter.cs" />
+    <Compile Include="Models\PaymentEnum.cs" />
     <Compile Include="Models\Save.cs" />
+    <Compile Include="Models\SolidColorBrushHelper.cs" />
+    <Compile Include="Models\SortEnum.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\CustomCheckBox.cs" />
     <Compile Include="ViewModels\MemberVM.cs" />
@@ -70,6 +83,7 @@
     <Compile Include="Views\LoginUserControl.xaml.cs">
       <DependentUpon>LoginUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoisirEnum.cs" />
     <Compile Include="Views\MemberListUserControl.xaml.cs">
       <DependentUpon>MemberListUserControl.xaml</DependentUpon>
     </Compile>

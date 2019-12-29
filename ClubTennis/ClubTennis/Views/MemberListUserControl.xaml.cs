@@ -23,8 +23,20 @@ namespace ClubTennis.Views
     public partial class MemberListUserControl : UserControl
     {
         private Save _save;
+        private List<People> _peoples;
         private List<CustomCheckBox<People>> _checkBoxes;
 
+        public List<People> Peoples
+        {
+            get
+            {
+                return this._peoples;
+            }
+            set
+            {
+                this._peoples = value;
+            }
+        }
         public List<CustomCheckBox<People>> CheckBoxes
         {
             get
@@ -32,20 +44,21 @@ namespace ClubTennis.Views
                 return this._checkBoxes;
             }
         }
-        public MemberListUserControl(Save save)
+      
+        public MemberListUserControl(List<People> peoples)
         {
             InitializeComponent();
-            this._save = save;
             this._checkBoxes = new List<CustomCheckBox<People>>();
-            InitializeList();
+            InitializeList(peoples);
         }
-        private void InitializeList()
+        private void InitializeList(List<People> peoples)
         {
-            foreach(People people in this._save.Peoples)
+            foreach(People people in peoples)
             {
                 Grid grid = GetMainGrid(people);
                 ContentStackPanel.Children.Add(grid);
             }
+            this._peoples = peoples;
         }
 
         private Grid GetMainGrid(People people)
@@ -56,6 +69,7 @@ namespace ClubTennis.Views
                 ColumnDefinitions =
                     {
                         new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
+                        new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
@@ -83,6 +97,8 @@ namespace ClubTennis.Views
 
             TextBlock gender = GetTextBlock(people.Gender.ToString(), defaultMargin);
 
+            TextBlock classement = GetTextBlock(((Member)people).Classement, defaultMargin);
+
             Grid menu = GetGrid();
 
             grid.Children.Add(checkBox);
@@ -91,6 +107,7 @@ namespace ClubTennis.Views
             grid.Children.Add(adress);
             grid.Children.Add(statut);
             grid.Children.Add(gender);
+            grid.Children.Add(classement);
             grid.Children.Add(menu);
 
             Grid.SetColumn(checkBox, 0);
@@ -99,7 +116,8 @@ namespace ClubTennis.Views
             Grid.SetColumn(adress, 3);
             Grid.SetColumn(statut, 4);
             Grid.SetColumn(gender, 5);
-            Grid.SetColumn(menu, 6);
+            Grid.SetColumn(classement, 6);
+            Grid.SetColumn(menu, 7);
 
             return grid;
         }
@@ -108,28 +126,33 @@ namespace ClubTennis.Views
         {
             Grid grid = new Grid()
             {
-                Margin = new Thickness(100,1,100,1),
+                Margin = new Thickness(50,1,50,1),
                 ColumnDefinitions =
                     {
-                        new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
                     }
             };
 
-            Button change = new Button(); //TODO
+            Button change = new Button()
+            {
+                Background = new SolidColorBrush(Colors.Green),
+                BorderThickness = new Thickness(0),
+                Margin = new Thickness(5)
+            };
 
-            Button delet = new Button();
-
-            Button see = new Button();
+            Button delet = new Button()
+            {
+                Background = new SolidColorBrush(Colors.Red),
+                BorderThickness = new Thickness(0),
+                Margin = new Thickness(5)
+            };
 
             grid.Children.Add(change);
             grid.Children.Add(delet);
-            grid.Children.Add(see);
 
             Grid.SetColumn(change, 0);
             Grid.SetColumn(delet, 1);
-            Grid.SetColumn(see, 2);
 
             return grid;
         }
