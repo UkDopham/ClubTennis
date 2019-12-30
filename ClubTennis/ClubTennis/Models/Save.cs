@@ -14,6 +14,19 @@ namespace ClubTennis.Models
         private List<People> _peoples;
         private Club _club;
         private List<User> _users; //Liste des utilisateurs qui ont acces aux données
+        private Guid _guid;
+
+        public Guid Guid
+        {
+            get
+            {
+                return this._guid;
+            }
+            set
+            {
+                this._guid = value;
+            }
+        }
 
         public List<People> Peoples
         {

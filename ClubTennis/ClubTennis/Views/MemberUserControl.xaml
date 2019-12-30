@@ -52,7 +52,8 @@
             <Button Background="{StaticResource VertButtonType}"
                     BorderThickness="0"
                     Grid.Column="3"
-                    Margin="1,0">
+                    Margin="1,0"
+                    Click="NewButtonClick">
                 <StackPanel Orientation="Horizontal" 
                             Margin="5">
                     <Image Source="pack://siteoforigin:,,,/Resources/plus.png"/>
@@ -177,17 +178,16 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBox x:Name="SearchTextBox"
-                         Grid.Column="0"
-                         BorderThickness="0"
-                         VerticalContentAlignment="Center"
-                         HorizontalContentAlignment="Center"/>
-                    <Button Grid.Column="1" 
-                            Margin="2"
-                            BorderThickness="0"
-                            Background="Transparent">
-                        <Image Source="pack://siteoforigin:,,,/Resources/magnifying-glass.png"/>
-                    </Button>
-
+                             Grid.Column="0"
+                             BorderThickness="0"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             TextChanged="SearchTextBoxTextChanged"/>
+                    
+                    <Image Grid.Column="1" 
+                               Margin="2" 
+                               Source="pack://siteoforigin:,,,/Resources/magnifying-glass.png"/>
+                    
                 </Grid>
             </Border>
 

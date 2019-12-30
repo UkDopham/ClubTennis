@@ -261,5 +261,28 @@ namespace ClubTennis.Views
 
             this._memberVM.SelectedUserControl = new MemberListUserControl(Sort());
         }
+
+        private void SearchTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchTextBox.Text == null)
+                SearchTextBox.Text = string.Empty;
+
+            SearchFilter filter = new SearchFilter(SearchTextBox.Text);
+
+            this._activeFilters.Add(filter);
+            this._memberVM.SelectedUserControl = new MemberListUserControl(Sort());
+            this._activeFilters.Remove(filter);
+        }
+
+        private void NewButtonClick(object sender, RoutedEventArgs e)
+        {
+            CreationWindows newWindows = new CreationWindows(this._save)
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            newWindows.ShowDialog();
+            this._save = newWindows.Save;
+            this._memberVM.SelectedUserControl =new MemberListUserControl(Sort());
+        }
     }
 }

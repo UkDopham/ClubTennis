@@ -75,3 +75,8 @@ C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\MemberListUserControl.g.cs
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\EmployeeListUserControl.baml
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\MemberListUserControl.baml
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\bin\Debug\Resources\tennis.jpg
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationWindows.g.cs
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationWindows.baml
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationMemberUserControl.g.cs
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationMemberUserControl.baml

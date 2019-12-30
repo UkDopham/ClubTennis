@@ -68,14 +68,22 @@
     <Compile Include="Models\Filters\LateFilter.cs" />
     <Compile Include="Models\Filters\LoisirFilter.cs" />
     <Compile Include="Models\Filters\PaidFilter.cs" />
+    <Compile Include="Models\Filters\SearchFilter.cs" />
     <Compile Include="Models\PaymentEnum.cs" />
     <Compile Include="Models\Save.cs" />
     <Compile Include="Models\SolidColorBrushHelper.cs" />
     <Compile Include="Models\SortEnum.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="ViewModels\CreationVM.cs" />
     <Compile Include="ViewModels\CustomCheckBox.cs" />
     <Compile Include="ViewModels\MemberVM.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
+    <Compile Include="Views\CreationMemberUserControl.xaml.cs">
+      <DependentUpon>CreationMemberUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreationWindows.xaml.cs">
+      <DependentUpon>CreationWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmployeeListUserControl.xaml.cs">
       <DependentUpon>EmployeeListUserControl.xaml</DependentUpon>
     </Compile>
@@ -116,6 +124,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CreationMemberUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreationWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EmployeeListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -254,6 +270,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clear.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tennis.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

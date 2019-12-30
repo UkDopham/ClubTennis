@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\App.xaml
-7563657018
+91018843420
 
-431306640796
+47-356834501
 151397803362
-MainWindow.xaml;Views\EmployeeListUserControl.xaml;Views\LoginUserControl.xaml;Views\MemberListUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;Views\TournamentUserControl.xaml;
+MainWindow.xaml;Views\CreationMemberUserControl.xaml;Views\CreationWindows.xaml;Views\EmployeeListUserControl.xaml;Views\LoginUserControl.xaml;Views\MemberListUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;Views\TournamentUserControl.xaml;
 
 False
 

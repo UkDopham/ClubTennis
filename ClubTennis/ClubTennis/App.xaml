@@ -11,5 +11,9 @@
         <SolidColorBrush x:Key="RedBackground" Color="#f6546a"/>
         <SolidColorBrush x:Key="JauneTennis" Color="#ffe900"/>
         <SolidColorBrush x:Key="VertButtonType" Color="#5ac18e"/>
+        <SolidColorBrush x:Key="Skobeloff" Color="#0F7173"/>
+        <SolidColorBrush x:Key="Laurel green" Color="#ABC798"/>
+        <SolidColorBrush x:Key="Desire" Color="#DF3B57"/>
+        <SolidColorBrush x:Key="Light red ochre" Color="#EF8354"/>
     </Application.Resources>
 </Application>

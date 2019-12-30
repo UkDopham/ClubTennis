@@ -171,11 +171,23 @@ namespace ClubTennis.Models
             this._serializer.Serialize(stream, this._saveTitles);
             stream.Close();
         }
-
+        public void AddSave(Save save)
+        {
+            Save tmp = this._saves.FirstOrDefault(x => Guid.Equals(save.Guid, x.Guid));
+            if (tmp != null)
+            {
+                this._saves.Remove(tmp);
+            }
+            this._saves.Add(save);
+        }
         private void WriteData()
         {
             foreach (Save save in this._saves)
             {
+                if (Guid.Equals(save.Guid, Guid.Empty))
+                {
+                    save.Guid = Guid.NewGuid();
+                }
                 Stream stream = new FileStream(save.GetPath(), FileMode.OpenOrCreate, FileAccess.Write);
                 this._serializer.Serialize(stream, save);
                 stream.Close();
