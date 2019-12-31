@@ -8,8 +8,8 @@
         Title="CreationWindows" 
         ResizeMode="NoResize"
         WindowStyle="None"
-        Height="450" 
-        Width="800">
+        Height="700" 
+        Width="500">
     <Grid Background="White"
           MouseLeftButtonDown="BorderMouseLeftButtonDown">
         <Grid.RowDefinitions>

@@ -14,7 +14,19 @@ namespace ClubTennis.Models
         private string _phoneNumber;
         private GenderEnum _gender;
         private string _adress;
+        private Guid _guid;
 
+        public Guid Guid
+        {
+            get
+            {
+                return this._guid;
+            }
+            set
+            {
+                this._guid = value;
+            }
+        }
         public string FirstName
         {
             get
@@ -66,16 +78,34 @@ namespace ClubTennis.Models
             this._phoneNumber = phoneNumber;
             this._gender = gender;
             this._adress = adress;
+            this._guid = Guid.NewGuid();
         }
+
+        public People(
+            string firstName,
+            string lastName,
+            string phoneNumber,
+            GenderEnum gender,
+            string adress,
+            Guid guid)
+        {
+            this._firstName = firstName;
+            this._lastName = lastName;
+            this._phoneNumber = phoneNumber;
+            this._gender = gender;
+            this._adress = adress;
+            this._guid = guid;
+        }
+
 
         public override string ToString()
         {
             return $"{this._firstName};{this._lastName};{this._phoneNumber};{this._gender};{this._adress}";
         }
 
-        public virtual string GetType()
+        public virtual PostEnum GetType()
         {
-            return "Personne";
+            return PostEnum.People;
         }
 
         public int CompareTo(People other)

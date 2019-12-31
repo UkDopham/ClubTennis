@@ -70,30 +70,31 @@
         <Grid Grid.Row="1"
               Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="308*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="62*"/>
+                <ColumnDefinition Width="105*"/>
+                <ColumnDefinition Width="18*"/>
             </Grid.ColumnDefinitions>
 
             <!--DELET-->
-            <Button Grid.Column="0"
+            <!--<Button Grid.Column="0"
                     Background="{StaticResource RedBackground}"
                     BorderThickness="0"
-                    Margin="5">
+                    Margin="5,5,5.5,5">
                 <Image Source="pack://siteoforigin:,,,/Resources/clear.png"
                        Margin="3"/>
-            </Button>
+            </Button>-->
 
             <Button x:Name="AlfabetButton"
                     Grid.Column="3"
                     BorderThickness="0"
                     Background="Transparent"
-                    Margin="6"
+                    Margin="5.5,6,6,6"
                     Click="AlfabetButtonClick">
                 <Image x:Name="AlfabetImage"
                        Source="pack://siteoforigin:,,,/Resources/font-symbol-of-letter-a.png"/>
@@ -102,7 +103,7 @@
             <!--GENDER-->
             <ComboBox x:Name="GenderComboBox" 
                     Grid.Column="4"
-                      Margin="5"
+                      Margin="5,5,5.5,5"
                       VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
                       SelectionChanged="GenderComboBoxSelectionChanged">
@@ -125,7 +126,7 @@
                         Grid.Column="6"                      
                       VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
-                      Margin="5"
+                      Margin="4.5,5,5,5"
                       SelectionChanged="LoisirComboBoxSelectionChanged">
                 <ComboBoxItem IsSelected="True">
                     Tous
@@ -143,7 +144,7 @@
                     Grid.Column="2"
                     BorderThickness="0"
                     Background="Transparent"
-                    Margin="6"
+                    Margin="6,6,6.5,6"
                     Click="ClassementButtonClick">
                 <Image Source="pack://siteoforigin:,,,/Resources/black.png"/>
             </Button>
@@ -151,7 +152,7 @@
             <!-- PAYMENT-->
             <ComboBox x:Name="PaymentComboBox"
                       Grid.Column="5"
-                      Margin="5"                      
+                      Margin="4.5,5,5.5,5"                      
                       VerticalContentAlignment="Center"
                       HorizontalContentAlignment="Center"
                       SelectionChanged="PaymentComboBoxSelectionChanged">
@@ -170,7 +171,7 @@
             <Border Grid.Column="7" 
                     Margin="5"
                     BorderBrush="Black"
-                    BorderThickness="1">
+                    BorderThickness="1" Grid.ColumnSpan="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"/>
@@ -183,17 +184,17 @@
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
                              TextChanged="SearchTextBoxTextChanged"/>
-                    
+
                     <Image Grid.Column="1" 
                                Margin="2" 
                                Source="pack://siteoforigin:,,,/Resources/magnifying-glass.png"/>
-                    
+
                 </Grid>
             </Border>
 
         </Grid>
         <!--CONTENT-->
         <ContentControl Grid.Row="2"
-                        Content="{Binding SelectedUserControl}"/>        
+                        Content="{Binding SelectedUserControl}"/>
     </Grid>
 </UserControl>

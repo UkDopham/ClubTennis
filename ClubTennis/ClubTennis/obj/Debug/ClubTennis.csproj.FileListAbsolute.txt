@@ -80,3 +80,5 @@ C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationWindows.baml
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationMemberUserControl.g.cs
 C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationMemberUserControl.baml
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationEmployeeUserControl.g.cs
+C:\Users\Alexa\OneDrive\Programmation\ClubTennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationEmployeeUserControl.baml

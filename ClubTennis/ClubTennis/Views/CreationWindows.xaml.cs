@@ -24,6 +24,7 @@ namespace ClubTennis.Views
         private CreationVM _creationVM;
         private bool _isMember;
         private Save _save;
+        private bool _isNew;
 
         public Save Save
         {
@@ -34,6 +35,7 @@ namespace ClubTennis.Views
         }
         public CreationWindows(Save save)
         {
+            this._isNew = true;
             this._save = save;
             this._creationVM = new CreationVM();
             this._creationVM.CreationUserControl = new CreationMemberUserControl();
@@ -41,7 +43,28 @@ namespace ClubTennis.Views
             this._isMember = true;
             InitializeComponent();
         }
-
+        public CreationWindows(Save save, People people, bool isMember)
+        {
+            this._isNew = false;
+            this._save = save;
+            this._creationVM = new CreationVM();
+            InitializeComponent();
+            if (isMember)
+            {
+                Member member = people as Member;
+                this._creationVM.CreationUserControl = new CreationMemberUserControl(member);
+                TitleButton.Content = "Membre";
+            }
+            else
+            {
+                Employee employee = people as Employee;
+                this._creationVM.CreationUserControl = new CreationEmployeeUserControl(employee);
+                TitleButton.Content = "Salarié";
+            }
+            DataContext = this._creationVM;
+            this._isMember = isMember;
+            TitleButton.IsEnabled = false;
+        }
         private void BorderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Window fenetre = Window.GetWindow(this);
@@ -50,23 +73,96 @@ namespace ClubTennis.Views
 
         private void TitleButton_Click(object sender, RoutedEventArgs e)
         {
+            this._isMember = !this._isMember;
 
+            TitleButton.Content = this._isMember ? "Membre" : "Salarié";
+            TitleButton.Background = this._isMember ? SolidColorBrushHelper.LightRedOchre() : SolidColorBrushHelper.Desire();
+            if (this._isMember)
+            {
+                this._creationVM.CreationUserControl = new CreationMemberUserControl();
+            }
+            else
+            {
+                this._creationVM.CreationUserControl = new CreationEmployeeUserControl();
+            }
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this._isMember)
+            if (this._isNew)
             {
-                CreationMemberUserControl creationMemberUserControl = (CreationMemberUserControl)this._creationVM.CreationUserControl;
-                if(creationMemberUserControl.IsAllFill())
+                if (this._isMember)
                 {
-                    Member member = creationMemberUserControl.GetMember();
-                    Data data = new Data();
-                    data.Load();
-                    this._save.Peoples.Add(member);
-                    data.Saves.Add(this._save);
-                    data.Write();
-                    CloseWindows();
+                    CreationMemberUserControl creationMemberUserControl = (CreationMemberUserControl)this._creationVM.CreationUserControl;
+                    if (creationMemberUserControl.IsAllFill())
+                    {
+                        Member member = creationMemberUserControl.GetMember();
+                        Data data = new Data();
+                        data.Load();
+                        this._save.Peoples.Add(member);
+                        data.Saves.Add(this._save);
+                        data.Write();
+                        CloseWindows();
+                    }
+                }
+                else
+                {
+                    CreationEmployeeUserControl creationEmployeeUserControl = (CreationEmployeeUserControl)this._creationVM.CreationUserControl;
+                    if (creationEmployeeUserControl.IsAllFill())
+                    {
+                        if (creationEmployeeUserControl.IsTrainer)
+                        {
+                            Trainer trainer = creationEmployeeUserControl.GetEmployee() as Trainer;
+                            Data data = new Data();
+                            data.Load();
+                            this._save.Peoples.Add(trainer);
+                            data.Saves.Add(this._save);
+                            data.Write();
+                        }
+                        else
+                        {
+                            Administration administration = creationEmployeeUserControl.GetEmployee() as Administration;
+                            Data data = new Data();
+                            data.Load();
+                            this._save.Peoples.Add(administration);
+                            data.Saves.Add(this._save);
+                            data.Write();
+                        }
+                        CloseWindows();
+                    }
+                }
+            }
+            else
+            {
+                if (this._isMember)
+                {
+                    CreationMemberUserControl creationMemberUserControl = (CreationMemberUserControl)this._creationVM.CreationUserControl;
+                    if (creationMemberUserControl.IsAllFill())
+                    {
+                        Member member = creationMemberUserControl.GetMember();
+                        Data data = new Data();
+                        data.Load();
+                        this._save.Peoples = this._save.Peoples.Where(x => !Guid.Equals(x.Guid, member.Guid)).ToList();
+                        this._save.Peoples.Add(member);
+                        data.Saves.Add(this._save);
+                        data.Write();
+                        CloseWindows();
+                    }
+                }
+                else
+                {
+                    CreationEmployeeUserControl creationMemberUserControl = (CreationEmployeeUserControl)this._creationVM.CreationUserControl;
+                    if (creationMemberUserControl.IsAllFill())
+                    {
+                        Employee employee = creationMemberUserControl.GetEmployee();
+                        Data data = new Data();
+                        data.Load();
+                        this._save.Peoples = this._save.Peoples.Where(x => !Guid.Equals(x.Guid, employee.Guid)).ToList();
+                        this._save.Peoples.Add(employee);
+                        data.Saves.Add(this._save);
+                        data.Write();
+                        CloseWindows();
+                    }
                 }
             }
         }

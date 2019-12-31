@@ -10,7 +10,7 @@ namespace ClubTennis.Models.Filters
     {
         public override List<People> Order(List<People> peoples)
         {
-            return peoples.Where(x => ((Member)x).Gender == GenderEnum.other).ToList();
+            return peoples.Where(x => x.Gender == GenderEnum.other).ToList();
         }
     }
 }

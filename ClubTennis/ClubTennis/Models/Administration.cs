@@ -22,5 +22,24 @@ namespace ClubTennis.Models
         {
 
         }
+
+        public Administration(
+            string firstName,
+            string lastName,
+            string phoneNumber,
+            GenderEnum gender,
+            string adress,
+            BankDetails bankDetails,
+            int salary,
+            DateTime entryDate,
+            Guid guid)
+            : base(firstName, lastName, phoneNumber, gender, adress, bankDetails, salary, entryDate, guid)
+        {
+
+        }
+        public override PostEnum GetType()
+        {
+            return PostEnum.Administration;
+        }
     }
 }

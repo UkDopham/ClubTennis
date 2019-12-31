@@ -22,5 +22,15 @@ namespace ClubTennis.Models
         {
             return new SolidColorBrush(Colors.Transparent);
         }
+
+        public static SolidColorBrush LightRedOchre()
+        {
+            return new SolidColorBrush(Color.FromRgb(239, 131, 84));
+        }
+
+        public static SolidColorBrush Desire()
+        {
+            return new SolidColorBrush(Color.FromRgb(223, 59, 87));
+        }
     }
 }

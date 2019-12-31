@@ -45,18 +45,23 @@ namespace ClubTennis.Views
             }
         }
       
-        public MemberListUserControl(List<People> peoples)
+        public MemberListUserControl(List<People> peoples, Save save)
         {
+            this._save = save;
             InitializeComponent();
             this._checkBoxes = new List<CustomCheckBox<People>>();
             InitializeList(peoples);
         }
         private void InitializeList(List<People> peoples)
         {
+            ContentStackPanel.Children.Clear();
             foreach(People people in peoples)
             {
-                Grid grid = GetMainGrid(people);
-                ContentStackPanel.Children.Add(grid);
+                if (people.GetType() == PostEnum.Member)
+                {
+                    Grid grid = GetMainGrid(people);
+                    ContentStackPanel.Children.Add(grid);
+                }
             }
             this._peoples = peoples;
         }
@@ -68,7 +73,6 @@ namespace ClubTennis.Views
             {
                 ColumnDefinitions =
                     {
-                        new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
@@ -78,14 +82,14 @@ namespace ClubTennis.Views
                         new ColumnDefinition{ Width = new GridLength(3, GridUnitType.Star)},
                     }
             };
-            CustomCheckBox<People> checkBox = new CustomCheckBox<People>(people)
-            {
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = defaultMargin,
-                Background = new SolidColorBrush(Colors.Transparent)
-            };
-            this._checkBoxes.Add(checkBox);
+            //CustomCheckBox<People> checkBox = new CustomCheckBox<People>(people)
+            //{
+            //    VerticalAlignment = VerticalAlignment.Center,
+            //    HorizontalAlignment = HorizontalAlignment.Center,
+            //    Margin = defaultMargin,
+            //    Background = new SolidColorBrush(Colors.Transparent)
+            //};
+            //this._checkBoxes.Add(checkBox);
 
             TextBlock name = GetTextBlock(people.LastName, defaultMargin);
 
@@ -99,9 +103,9 @@ namespace ClubTennis.Views
 
             TextBlock classement = GetTextBlock(((Member)people).Classement, defaultMargin);
 
-            Grid menu = GetGrid();
+            Grid menu = GetGrid(people);
 
-            grid.Children.Add(checkBox);
+            //grid.Children.Add(checkBox);
             grid.Children.Add(name);
             grid.Children.Add(phone);
             grid.Children.Add(adress);
@@ -110,19 +114,19 @@ namespace ClubTennis.Views
             grid.Children.Add(classement);
             grid.Children.Add(menu);
 
-            Grid.SetColumn(checkBox, 0);
-            Grid.SetColumn(name, 1);
-            Grid.SetColumn(phone, 2);
-            Grid.SetColumn(adress, 3);
-            Grid.SetColumn(statut, 4);
-            Grid.SetColumn(gender, 5);
-            Grid.SetColumn(classement, 6);
-            Grid.SetColumn(menu, 7);
+            //Grid.SetColumn(checkBox, 0);
+            Grid.SetColumn(name, 0);
+            Grid.SetColumn(phone, 1);
+            Grid.SetColumn(adress, 2);
+            Grid.SetColumn(statut, 3);
+            Grid.SetColumn(gender, 4);
+            Grid.SetColumn(classement, 5);
+            Grid.SetColumn(menu, 6);
 
             return grid;
         }
 
-        private Grid GetGrid()
+        private Grid GetGrid(People people)
         {
             Grid grid = new Grid()
             {
@@ -138,14 +142,41 @@ namespace ClubTennis.Views
             {
                 Background = new SolidColorBrush(Colors.Green),
                 BorderThickness = new Thickness(0),
+                MaxHeight = 15,
+                MaxWidth = 15,
                 Margin = new Thickness(5)
+            };
+
+            change.Click += (s, e) =>
+            {
+                CreationWindows newWindows = new CreationWindows(this._save, people, true)
+                {
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
+                newWindows.ShowDialog();
+                this._save = newWindows.Save;
+
+                InitializeList(this._save.Peoples);
             };
 
             Button delet = new Button()
             {
                 Background = new SolidColorBrush(Colors.Red),
                 BorderThickness = new Thickness(0),
+                MaxHeight = 15,
+                MaxWidth = 15,
                 Margin = new Thickness(5)
+            };
+
+            delet.Click += (s, e) =>
+            {
+                Data data = new Data();
+                data.Load();
+                this._save.Peoples.Remove(people);
+                data.Saves.Add(this._save);
+
+                data.Write();
+                InitializeList(this._save.Peoples);
             };
 
             grid.Children.Add(change);
@@ -170,10 +201,10 @@ namespace ClubTennis.Views
 
         private void CheckBoxClick(object sender, RoutedEventArgs e)
         {
-            foreach(CustomCheckBox<People> customCheckBox in this._checkBoxes)
-            {
-                customCheckBox.IsChecked = AllCheckBoxes.IsChecked;
-            }
+            //foreach(CustomCheckBox<People> customCheckBox in this._checkBoxes)
+            //{
+            //    customCheckBox.IsChecked = AllCheckBoxes.IsChecked;
+            //}
         }
     }
 }

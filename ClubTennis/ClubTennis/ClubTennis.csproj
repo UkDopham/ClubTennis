@@ -70,6 +70,7 @@
     <Compile Include="Models\Filters\PaidFilter.cs" />
     <Compile Include="Models\Filters\SearchFilter.cs" />
     <Compile Include="Models\PaymentEnum.cs" />
+    <Compile Include="Models\PostEnum.cs" />
     <Compile Include="Models\Save.cs" />
     <Compile Include="Models\SolidColorBrushHelper.cs" />
     <Compile Include="Models\SortEnum.cs" />
@@ -78,6 +79,9 @@
     <Compile Include="ViewModels\CustomCheckBox.cs" />
     <Compile Include="ViewModels\MemberVM.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
+    <Compile Include="Views\CreationEmployeeUserControl.xaml.cs">
+      <DependentUpon>CreationEmployeeUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreationMemberUserControl.xaml.cs">
       <DependentUpon>CreationMemberUserControl.xaml</DependentUpon>
     </Compile>
@@ -124,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CreationEmployeeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreationMemberUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -21,11 +21,32 @@ namespace ClubTennis.Views
     /// </summary>
     public partial class CreationMemberUserControl : UserControl
     {
+        private Guid _guid;
 
+        public Guid Guid
+        {
+            get
+            {
+                return this._guid;
+            }
+        }
         public CreationMemberUserControl()
         {
             InitializeComponent();
         }
+        public CreationMemberUserControl(Member member)
+        {
+            this._guid = member.Guid;
+            InitializeComponent();
+            PrenomTextBox.Text = member.FirstName;
+            NomTextBox.Text = member.LastName;
+            PhoneTextBox.Text = member.PhoneNumber;
+            GenreComboBox.SelectedIndex = Convert.ToInt32(member.Gender) - 1;
+            AdressTextBox.Text = member.Adress;
+            PaymentCheckBox.IsChecked = member.HasPaid;
+            ClassementComboBox.SelectedIndex = member.ClassementValue();
+        }
+
         public bool IsAllFill()
         {
             return !string.IsNullOrEmpty(PrenomTextBox.Text) &&
@@ -35,20 +56,42 @@ namespace ClubTennis.Views
         }
         public Member GetMember()
         {
-            return ClassementComboBox.SelectedIndex == 0 ? new Member(PrenomTextBox.Text,
-                NomTextBox.Text,
-                PhoneTextBox.Text,
-               (GenderEnum)GenreComboBox.SelectedIndex,
-               AdressTextBox.Text,
-               (bool)PaymentCheckBox.IsChecked) :
+            if (Guid.Equals(this._guid, Guid.Empty)) //cas de nouveau membre
+            {
+                return ClassementComboBox.SelectedIndex == 0 ? new Member(PrenomTextBox.Text,
+                    NomTextBox.Text,
+                    PhoneTextBox.Text,
+                   (GenderEnum)(GenreComboBox.SelectedIndex + 1),
+                   AdressTextBox.Text,
+                   (bool)PaymentCheckBox.IsChecked) :
 
-               new Member(PrenomTextBox.Text,
-                NomTextBox.Text,
-                PhoneTextBox.Text,
-               (GenderEnum)GenreComboBox.SelectedIndex,
-               AdressTextBox.Text,
-               (bool)PaymentCheckBox.IsChecked,
-               ClassementComboBox.SelectedIndex.ToString());//TODO ENUM classement
+                   new Member(PrenomTextBox.Text,
+                    NomTextBox.Text,
+                    PhoneTextBox.Text,
+                   (GenderEnum)(GenreComboBox.SelectedIndex + 1),
+                   AdressTextBox.Text,
+                   (bool)PaymentCheckBox.IsChecked,
+                   ClassementComboBox.SelectedIndex.ToString());//TODO ENUM classement
+            }
+            else
+            {
+                return ClassementComboBox.SelectedIndex == 0 ? new Member(PrenomTextBox.Text,
+                    NomTextBox.Text,
+                    PhoneTextBox.Text,
+                   (GenderEnum)(GenreComboBox.SelectedIndex + 1),
+                   AdressTextBox.Text,
+                   (bool)PaymentCheckBox.IsChecked,
+                   this._guid) :
+
+                   new Member(PrenomTextBox.Text,
+                    NomTextBox.Text,
+                    PhoneTextBox.Text,
+                   (GenderEnum)(GenreComboBox.SelectedIndex + 1),
+                   AdressTextBox.Text,
+                   (bool)PaymentCheckBox.IsChecked,
+                   ClassementComboBox.SelectedIndex.ToString(),
+                   this._guid);//TODO ENUM classement
+            }
         }
     }
 }

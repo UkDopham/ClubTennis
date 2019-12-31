@@ -12,6 +12,29 @@ namespace ClubTennis.Models
         private string _rib;
         private string _iban;
 
+        public string Rib
+        {
+            get
+            {
+                return this._rib;
+            }
+            set
+            {
+                this._rib = value;
+            }
+        }
+
+        public string Iban
+        {
+            get
+            {
+                return this._iban;
+            }
+            set
+            {
+                this._iban = value;
+            }
+        }
         public BankDetails(string rib, string iban)
         {
             this._rib = rib;

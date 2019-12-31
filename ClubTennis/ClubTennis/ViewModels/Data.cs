@@ -188,6 +188,14 @@ namespace ClubTennis.Models
                 {
                     save.Guid = Guid.NewGuid();
                 }
+               
+                foreach(People people in save.Peoples)
+                {
+                    if (Guid.Equals(people.Guid, Guid.Empty))
+                    {
+                        people.Guid = Guid.NewGuid();
+                    }
+                }
                 Stream stream = new FileStream(save.GetPath(), FileMode.OpenOrCreate, FileAccess.Write);
                 this._serializer.Serialize(stream, save);
                 stream.Close();

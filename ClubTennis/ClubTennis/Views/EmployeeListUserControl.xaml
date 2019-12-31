@@ -7,6 +7,130 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <!--HEADER-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<Grid Grid.Column="0"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <CheckBox x:Name="AllCheckBoxes"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Unchecked="CheckBoxClick"
+                          Checked="CheckBoxClick"/>
+            </Grid>-->
+
+            <Grid Grid.Column="0"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Nom"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="1"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Téléphone"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="2"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Adresse"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="3"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Poste"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="4"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Genre"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="5"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Salaire"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="6"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="Date"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="7"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="RIB"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="8"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <TextBlock  Text="IBAN"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            FontSize="15"/>
+            </Grid>
             
+            <Grid Grid.Column="9"
+                  Background="{StaticResource GrisClaireBackground}"
+                  Margin="1,0">
+                <Image Source="pack://siteoforigin:,,,/Resources/list.png"
+                       Margin="5"/>
+            </Grid>
+
+        </Grid>
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      >
+            <StackPanel x:Name="ContentStackPanel"/>
+        </ScrollViewer>
     </Grid>
 </UserControl>
