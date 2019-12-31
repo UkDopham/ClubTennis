@@ -36,7 +36,7 @@
 
                 <TextBlock Text="TCM"
                                FontSize="25"
-                               Foreground="{StaticResource VertClaireBackground}"
+                               Foreground="{StaticResource VertBackground}"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                Margin="5"/>
@@ -56,7 +56,7 @@
                     Click="OnOffButtonClick">
                 <StackPanel Orientation="Horizontal">
                     
-                    <Image Source="pack://siteoforigin:,,,/Resources/list (1).png"
+                    <Image Source="pack://siteoforigin:,,,/Resources/list.png"
                            Margin="5,0"/>
                     
                     <TextBlock Text="Menu"
