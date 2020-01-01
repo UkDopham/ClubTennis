@@ -1,5 +1,6 @@
 ﻿using ClubTennis.Models;
 using ClubTennis.ViewModels;
+using ClubTennis.Views.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace ClubTennis.Views
     /// <summary>
     /// Logique d'interaction pour MemberListUserControl.xaml
     /// </summary>
-    public partial class MemberListUserControl : UserControl
+    public partial class MemberListUserControl : UserControl, ISave
     {
         private Save _save;
         private List<People> _peoples;
@@ -44,7 +45,21 @@ namespace ClubTennis.Views
                 return this._checkBoxes;
             }
         }
-      
+
+        public Save Save
+        {
+            get
+            {
+                return this._save;
+            }
+
+            set
+            {
+                this._save = value;
+            }
+        }
+
+
         public MemberListUserControl(List<People> peoples, Save save)
         {
             this._save = save;
@@ -154,7 +169,7 @@ namespace ClubTennis.Views
                     WindowStartupLocation = WindowStartupLocation.CenterScreen
                 };
                 newWindows.ShowDialog();
-                this._save = newWindows.Save;
+                //this._save = newWindows.Save;
 
                 InitializeList(this._save.Peoples);
             };

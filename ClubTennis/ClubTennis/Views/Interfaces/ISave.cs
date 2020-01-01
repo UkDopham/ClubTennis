@@ -9,6 +9,6 @@ namespace ClubTennis.Views.Interfaces
 {
     public interface ISave
     {
-        Save Save { get; }
+        Save Save { get; set; }
     }
 }

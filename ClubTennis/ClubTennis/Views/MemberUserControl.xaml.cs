@@ -4,6 +4,7 @@ using ClubTennis.ViewModels;
 using ClubTennis.Views.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,9 @@ namespace ClubTennis.Views
     /// <summary>
     /// Logique d'interaction pour MemberUserControl.xaml
     /// </summary>
-    public partial class MemberUserControl : UserControl, ISave
+    public partial class MemberUserControl : UserControl, ISave 
     {
         private MemberVM _memberVM;
-        private Save _save;
         private List<People> _peoples;
 
         private bool _memberSelected;
@@ -33,7 +33,32 @@ namespace ClubTennis.Views
         private bool _alfabetSorted;
         private bool _classementSorted;
 
+        public int Members
+        {
+            get
+            {
+                return this._memberVM.SelectedUserControl.Save.Peoples.Where(x => x.GetType() == PostEnum.Member).Count();
+            }
+        }
+
+        public int Trainers
+        {
+            get
+            {
+                return this._memberVM.SelectedUserControl.Save.Peoples.Where(x => x.GetType() == PostEnum.Trainer).Count();
+            }
+        }
+
+        public int MembershipLate
+        {
+            get
+            {
+                return this._memberVM.SelectedUserControl.Save.Peoples.Where(x => x.GetType() == PostEnum.Member).Where(x => !((Member)x).HasPaid).Count();
+            }
+        }
         private List<Filter> _activeFilters; //Stockage des filtres actifs
+
+
         public MemberVM MemberVM
         {
             get
@@ -43,21 +68,20 @@ namespace ClubTennis.Views
         }
         public MemberUserControl(Save save)
         {
-            this._memberVM = new MemberVM();
+            this._memberVM = new MemberVM(save);
 
             this._employeeSelected = false;
-            this._memberSelected = false;
-
-            this._peoples = save.Peoples;
-            this._save = save;
-            this._activeFilters = new List<Filter>();
-            InitializeComponent();
-            DataContext = this._memberVM;
+            this._memberSelected = true;
             this._alfabetSorted = false;
             this._classementSorted = false;
+            this._activeFilters = new List<Filter>();
+            InitializeComponent();
+
+            MemberButton.Background = this._memberSelected ? SolidColorBrushHelper.DarkGreen() : SolidColorBrushHelper.Green();
+
+            DataContext = this._memberVM;
         }
 
-        public Save Save => this._save;
 
         private void EmployeeButtonClick(object sender, RoutedEventArgs e)
         {
@@ -71,7 +95,7 @@ namespace ClubTennis.Views
             MemberButton.Background = SolidColorBrushHelper.Green();
             this._memberSelected = false;
 
-            this._memberVM.SelectedUserControl = new EmployeeListUserControl(this._save.Peoples, this._save);
+            this._memberVM.SelectedUserControl = new EmployeeListUserControl(this._memberVM.Save.Peoples, this._memberVM.Save);
         }
 
         private void MemberButtonClick(object sender, RoutedEventArgs e)
@@ -85,20 +109,7 @@ namespace ClubTennis.Views
             EmployeeButton.Background = SolidColorBrushHelper.Green();
             this._employeeSelected = false;
 
-            this._memberVM.SelectedUserControl = new MemberListUserControl(this._save.Peoples, this._save); 
-        }
-        /// <summary>
-        /// Effectue tous les tris activés sur la liste de personne
-        /// </summary>
-        /// <returns></returns>
-        private List<People> Sort()
-        {
-            List<People> peoples = this._peoples;
-            foreach(Filter filter in this._activeFilters)
-            {
-                peoples = filter.Order(peoples);
-            }
-            return peoples;
+            this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Save.Peoples, this._memberVM.Save); 
         }
         /// <summary>
         /// Filtre sur l'ordre alphabetique du nom des membres
@@ -116,25 +127,25 @@ namespace ClubTennis.Views
             this._alfabetSorted = !this._alfabetSorted;
 
             AlfabetButton.Background = this._alfabetSorted ? SolidColorBrushHelper.Green() : SolidColorBrushHelper.Transparent();
+
             AlfabetFilter filter = new AlfabetFilter();
 
             if (this._alfabetSorted)
             {
-                this._activeFilters.Add(filter); //FILTER PATTERN
+                this._memberVM.AddFilter(filter);
             }
             else
             {
-                List<AlfabetFilter> tmp = this._activeFilters.OfType<AlfabetFilter>().ToList();
-                tmp.ForEach(x => this._activeFilters.Remove(x));
+                this._memberVM.RemoveFilter(filter);
             }
 
             if (this._memberSelected)
             {
-                this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
             else
             {
-                this._memberVM.SelectedUserControl = new EmployeeListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new EmployeeListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
         }
 
@@ -153,16 +164,15 @@ namespace ClubTennis.Views
 
             if (this._classementSorted)
             {
-                this._activeFilters.Add(filter);
+                this._memberVM.AddFilter(filter);
             }
             else
             {
-                List<CompetitionFilter> tmp = this._activeFilters.OfType<CompetitionFilter>().ToList();
-                tmp.ForEach(x => this._activeFilters.Remove(x));
+                this._memberVM.RemoveFilter(filter);
             }
 
 
-            this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+            this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
         }
         /// <summary>
         /// Filtre sur le genre du membre
@@ -173,42 +183,36 @@ namespace ClubTennis.Views
         {
             //0 all / 1 man / 2 woman / 3 other
 
-
-            List<GenderFilterMale> males = this._activeFilters.OfType<GenderFilterMale>().ToList();
-            males.ForEach(x => this._activeFilters.Remove(x));
-
-            List<GenderFilterWoman> women = this._activeFilters.OfType<GenderFilterWoman>().ToList();
-            women.ForEach(x => this._activeFilters.Remove(x));
-
-            List<GenderFilterOther> others = this._activeFilters.OfType<GenderFilterOther>().ToList();
-            others.ForEach(x => this._activeFilters.Remove(x));
+            this._memberVM.RemoveFilter(new GenderFilterMale());
+            this._memberVM.RemoveFilter(new GenderFilterWoman());
+            this._memberVM.RemoveFilter(new GenderFilterOther());
 
             switch (GenderComboBox.SelectedIndex)
             {
 
                 case 1:
                     GenderFilterMale male = new GenderFilterMale();
-                    this._activeFilters.Add(male);
+                    this._memberVM.AddFilter(male);
                     break;
 
                 case 2:
                     GenderFilterWoman woman = new GenderFilterWoman();
-                    this._activeFilters.Add(woman);
+                    this._memberVM.AddFilter(woman);
                     break;
 
                 case 3:
                     GenderFilterOther other = new GenderFilterOther();
-                    this._activeFilters.Add(other);
+                    this._memberVM.AddFilter(other);
                     break;
             }
 
             if (this._memberSelected)
             {
-                this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
             else
             {
-                this._memberVM.SelectedUserControl = new EmployeeListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new EmployeeListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
         }
         /// <summary>
@@ -220,26 +224,23 @@ namespace ClubTennis.Views
         {
             //0 all / 1 a jour / 2 retard
 
-            List<LateFilter> lates = this._activeFilters.OfType<LateFilter>().ToList();
-            lates.ForEach(x => this._activeFilters.Remove(x));
-
-            List<PaidFilter> paids = this._activeFilters.OfType<PaidFilter>().ToList();
-            paids.ForEach(x => this._activeFilters.Remove(x));
+            this._memberVM.RemoveFilter(new LateFilter());
+            this._memberVM.RemoveFilter(new PaidFilter());
 
             switch (PaymentComboBox.SelectedIndex)
             {
                 case 1:
                     PaidFilter paid = new PaidFilter();
-                    this._activeFilters.Add(paid);
+                    this._memberVM.AddFilter(paid);
                     break;
 
                 case 2:
                     LateFilter late = new LateFilter();
-                    this._activeFilters.Add(late);
+                    this._memberVM.AddFilter(late);
                     break;
             }
 
-            this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+            this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
         }
         /// <summary>
         /// Filtre sur le fait de participé aux compét ou pas d'un membre
@@ -250,29 +251,25 @@ namespace ClubTennis.Views
         {
             //0 all /1 loisir / 2 Compétition
 
-
-            List<LoisirFilter> loisirs = this._activeFilters.OfType<LoisirFilter>().ToList();
-            loisirs.ForEach(x => this._activeFilters.Remove(x));
-
-            List<DoCompetitonFilter> doCompetition = this._activeFilters.OfType<DoCompetitonFilter>().ToList();
-            doCompetition.ForEach(x => this._activeFilters.Remove(x));
+            this._memberVM.RemoveFilter(new LoisirFilter());
+            this._memberVM.RemoveFilter(new DoCompetitonFilter());
 
             switch (LoisirComboBox.SelectedIndex)
             {
 
                 case 1:
                     LoisirFilter loisir = new LoisirFilter();
-                    this._activeFilters.Add(loisir);
+                    this._memberVM.AddFilter(loisir);
                     break;
 
                 case 2:
                     DoCompetitonFilter doCompetiton = new DoCompetitonFilter();
-                    this._activeFilters.Add(doCompetiton);
+                    this._memberVM.AddFilter(doCompetiton);
                     break;
             }
 
 
-            this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+            this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
         }
 
         private void SearchTextBoxTextChanged(object sender, TextChangedEventArgs e)
@@ -282,36 +279,36 @@ namespace ClubTennis.Views
 
             SearchFilter filter = new SearchFilter(SearchTextBox.Text);
 
-            this._activeFilters.Add(filter);
+            this._memberVM.AddFilter(filter);
 
             if (this._memberSelected)
             {
-                this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
             else
             {
-                this._memberVM.SelectedUserControl = new EmployeeListUserControl(Sort(),this._save);
+                this._memberVM.SelectedUserControl = new EmployeeListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
 
-            this._activeFilters.Remove(filter);
+            this._memberVM.RemoveFilter(filter);
         }
 
         private void NewButtonClick(object sender, RoutedEventArgs e)
         {
-            CreationWindows newWindows = new CreationWindows(this._save)
+            CreationWindows newWindows = new CreationWindows(this._memberVM.Save)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             newWindows.ShowDialog();
-            this._save = newWindows.Save;
+            //this._memberVM.
 
             if (this._memberSelected)
             {
-                this._memberVM.SelectedUserControl = new MemberListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
             else
             {
-                this._memberVM.SelectedUserControl = new EmployeeListUserControl(Sort(), this._save);
+                this._memberVM.SelectedUserControl = new EmployeeListUserControl(this._memberVM.Sort(), this._memberVM.Save);
             }
         }
     }

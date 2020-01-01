@@ -1,4 +1,5 @@
 ﻿using ClubTennis.Models;
+using ClubTennis.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,8 @@ namespace ClubTennis.Views
     /// </summary>
     public partial class MenuUserControl : UserControl
     {
-        private string _username;
-        private User _user;
+        private MenuVM _menu;
         private List<Button> _buttons;
-        private Save _save;
 
         private MemberUserControl _memberUserControl;
 
@@ -36,22 +35,14 @@ namespace ClubTennis.Views
             }
         }
         
-        public string Username
-        {
-            get
-            {
-                return this._username;
-            }
-        }
         public MenuUserControl(Save save, User user)
         {
             InitializeComponent();
             InitializationButtons();
-            this._save = save;
-            this._username = user.Username;
-            this._user = user;
+            this._menu = new MenuVM(save, user);
             SideMenuGrid.Visibility = Visibility.Hidden;
-            DataContext = new MemberUserControl(this._save);
+
+            DataContext = new MemberUserControl(this._menu.Save);
             MemberButton.Background = SolidColorBrushHelper.DarkGreen();
         }
 
@@ -86,7 +77,7 @@ namespace ClubTennis.Views
 
         private void MemberButtonClick(object sender, RoutedEventArgs e)
         {
-            this._memberUserControl = new MemberUserControl(this._save);
+            this._memberUserControl = new MemberUserControl(this._menu.Save);
             DataContext = this._memberUserControl;
 
             UnselectedButtonsColorization(MemberButton);
@@ -95,7 +86,7 @@ namespace ClubTennis.Views
 
         private void TournamentButtonClick(object sender, RoutedEventArgs e)
         {
-            DataContext = new TournamentUserControl(this._save);
+            DataContext = new TournamentUserControl(this._menu.Save);
 
             UnselectedButtonsColorization(TournamentButton);
             TournamentButton.Background = SolidColorBrushHelper.DarkGreen();

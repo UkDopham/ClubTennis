@@ -1,4 +1,5 @@
 ﻿using ClubTennis.Models;
+using ClubTennis.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,60 +22,51 @@ namespace ClubTennis.Views
     /// </summary>
     public partial class LoginUserControl : UserControl
     {
-        private Data _data;
-        private MenuUserControl _menuUserControl;
-        private User _user;
+        private LoginVM _loginVM; 
         public LoginUserControl()
         {
+            this._loginVM = new LoginVM();
             InitializeComponent();
-            this._data = new Data();
             RememberInitialization();
-            this._data.Load();
         }
 
         private void RememberInitialization()
         {
-            this._data.LoadRemember();
-            if (!string.IsNullOrEmpty(this._data.Remember))
+            if (!string.IsNullOrEmpty(this._loginVM.Data.Remember))
             {
                 rememberCheckBox.IsChecked = true;
-                UsernameTextBox.Text = this._data.Remember;
+                UsernameTextBox.Text = this._loginVM.Data.Remember;
             }
         }
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {           
-            this._data.LoadID();
-            if (IsCorrectID())
+            if (this._loginVM.IsCorrectID(UsernameTextBox.Text, PasswordBox.Password))
             {
                 Window fenetre = Window.GetWindow(this);
-                
-                Save save = this._data.Saves.FirstOrDefault(x => x.Users.FirstOrDefault(y => y.Username == UsernameTextBox.Text) != null);
-                fenetre.DataContext = new MenuUserControl(save, this._user);
 
-                this._data.Remember = (bool)rememberCheckBox.IsChecked ? UsernameTextBox.Text : string.Empty;
-                this._data.WriteRemember();
+                Save save = this._loginVM.SaveFromUser(UsernameTextBox.Text);
+                
+                if (save != null)
+                {
+                    fenetre.DataContext = new MenuUserControl(save, this._loginVM.User);
+                    this._loginVM.Remember((bool)rememberCheckBox.IsChecked, UsernameTextBox.Text);
+                }
+                else
+                {
+                    Redden();
+                }
+                
             }
             else
             {
-                UsernameTextBox.Foreground = new SolidColorBrush(Colors.Red);
-                PasswordBox.Foreground = new SolidColorBrush(Colors.Red);
+                Redden();
             }
         }
 
-        public bool IsCorrectID()
+        private void Redden()
         {
-            bool isCorrect = false;
-
-            if (this._data.Users != null)
-            {
-                this._user = this._data.Users.FirstOrDefault(x => x.Username == UsernameTextBox.Text && x.Password == PasswordBox.Password);
-
-                if (this._user != null)
-                {
-                    isCorrect = true;
-                }
-            }
-            return isCorrect;
+            UsernameTextBox.Foreground = new SolidColorBrush(Colors.Red);
+            PasswordBox.Foreground = new SolidColorBrush(Colors.Red);
         }
 
         private void TextBoxGotFocus(object sender, RoutedEventArgs e)

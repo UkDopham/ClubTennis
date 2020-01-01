@@ -22,12 +22,13 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="1"
-                    Background="Transparent"
+                    Background="{StaticResource Desire}"
                     Click="FermerButtonClick"
                     BorderThickness="0"
                     Margin="10,5"
                     VerticalAlignment="Top">
-                <Image Source="pack://siteoforigin:,,,/Resources/error.png"/>
+                <Image Source="pack://siteoforigin:,,,/Resources/clear.png"
+                       Margin="5"/>
             </Button>
         </Grid>
         <!-- Login Box -->
@@ -60,7 +61,6 @@
                                Text="TENNIS CLUB MANAGER 2020"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
                                FontSize="22"/>
                 </Grid>
                 <!--Login -->
@@ -79,13 +79,11 @@
                                FontSize="14"
                                Text="Username"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontFamily="/ClubTennis;component/Fonts/#Roboto Th"/>
+                               HorizontalAlignment="Center"/>
                     
                     <TextBox x:Name="UsernameTextBox"
                              Grid.Row="1"
                              TextAlignment="Center"
-                             FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
                              FontSize="12"
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
@@ -96,8 +94,7 @@
                                FontSize="14"
                                Text="Password"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontFamily="/ClubTennis;component/Fonts/#Roboto Th"/>
+                               HorizontalAlignment="Center"/>
                     
                     <PasswordBox x:Name="PasswordBox"
                                  Grid.Row="3"
@@ -125,7 +122,6 @@
 
                             <TextBlock Grid.Column="0" 
                                 Text="Remember my ID"
-                                       FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
                                        FontSize="11"
                                        VerticalAlignment="Center"
                                        Margin="10,0"/>
@@ -141,7 +137,6 @@
                                 Background="{StaticResource VertButtonType}"
                                 Content="LOGIN"
                                 FontSize="14"
-                                FontFamily="/ClubTennis;component/Fonts/#Roboto Th"
                                 Foreground="White"
                                 BorderThickness="0"
                                 Click="LoginButtonClick"/>

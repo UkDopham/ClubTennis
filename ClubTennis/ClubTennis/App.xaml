@@ -15,5 +15,8 @@
         <SolidColorBrush x:Key="Laurel green" Color="#ABC798"/>
         <SolidColorBrush x:Key="Desire" Color="#DF3B57"/>
         <SolidColorBrush x:Key="Light red ochre" Color="#EF8354"/>
+        <SolidColorBrush x:Key="Queen blue" Color="#3E6990"/>
+        <SolidColorBrush x:Key="Radical red" Color="#FF3562"/>
+        <SolidColorBrush x:Key="Meat brown" Color="#E0CA3C"/>
     </Application.Resources>
 </Application>

@@ -29,6 +29,16 @@ namespace ClubTennis.Views
             InitializeComponent();
         }
 
-        public Save Save => this._save;
+        public Save Save
+        {
+            get
+            {
+                return this._save;
+            }
+            set
+            {
+                this._save = value;
+            }
+        }
     }
 }

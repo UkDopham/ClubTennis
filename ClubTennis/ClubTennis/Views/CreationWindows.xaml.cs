@@ -22,22 +22,14 @@ namespace ClubTennis.Views
     public partial class CreationWindows : Window
     {
         private CreationVM _creationVM;
+
         private bool _isMember;
-        private Save _save;
         private bool _isNew;
 
-        public Save Save
-        {
-            get
-            {
-                return this._save;
-            }
-        }
         public CreationWindows(Save save)
         {
             this._isNew = true;
-            this._save = save;
-            this._creationVM = new CreationVM();
+            this._creationVM = new CreationVM(save);
             this._creationVM.CreationUserControl = new CreationMemberUserControl();
             DataContext = this._creationVM;
             this._isMember = true;
@@ -46,8 +38,7 @@ namespace ClubTennis.Views
         public CreationWindows(Save save, People people, bool isMember)
         {
             this._isNew = false;
-            this._save = save;
-            this._creationVM = new CreationVM();
+            this._creationVM = new CreationVM(save);
             InitializeComponent();
             if (isMember)
             {
@@ -99,8 +90,8 @@ namespace ClubTennis.Views
                         Member member = creationMemberUserControl.GetMember();
                         Data data = new Data();
                         data.Load();
-                        this._save.Peoples.Add(member);
-                        data.Saves.Add(this._save);
+                        this._creationVM.Save.Peoples.Add(member);
+                        data.Saves.Add(this._creationVM.Save);
                         data.Write();
                         CloseWindows();
                     }
@@ -115,8 +106,8 @@ namespace ClubTennis.Views
                             Trainer trainer = creationEmployeeUserControl.GetEmployee() as Trainer;
                             Data data = new Data();
                             data.Load();
-                            this._save.Peoples.Add(trainer);
-                            data.Saves.Add(this._save);
+                            this._creationVM.Save.Peoples.Add(trainer);
+                            data.Saves.Add(this._creationVM.Save);
                             data.Write();
                         }
                         else
@@ -124,8 +115,8 @@ namespace ClubTennis.Views
                             Administration administration = creationEmployeeUserControl.GetEmployee() as Administration;
                             Data data = new Data();
                             data.Load();
-                            this._save.Peoples.Add(administration);
-                            data.Saves.Add(this._save);
+                            this._creationVM.Save.Peoples.Add(administration);
+                            data.Saves.Add(this._creationVM.Save);
                             data.Write();
                         }
                         CloseWindows();
@@ -142,9 +133,9 @@ namespace ClubTennis.Views
                         Member member = creationMemberUserControl.GetMember();
                         Data data = new Data();
                         data.Load();
-                        this._save.Peoples = this._save.Peoples.Where(x => !Guid.Equals(x.Guid, member.Guid)).ToList();
-                        this._save.Peoples.Add(member);
-                        data.Saves.Add(this._save);
+                        this._creationVM.Save.Peoples = this._creationVM.Save.Peoples.Where(x => !Guid.Equals(x.Guid, member.Guid)).ToList();
+                        this._creationVM.Save.Peoples.Add(member);
+                        data.Saves.Add(this._creationVM.Save);
                         data.Write();
                         CloseWindows();
                     }
@@ -157,9 +148,9 @@ namespace ClubTennis.Views
                         Employee employee = creationMemberUserControl.GetEmployee();
                         Data data = new Data();
                         data.Load();
-                        this._save.Peoples = this._save.Peoples.Where(x => !Guid.Equals(x.Guid, employee.Guid)).ToList();
-                        this._save.Peoples.Add(employee);
-                        data.Saves.Add(this._save);
+                        this._creationVM.Save.Peoples = this._creationVM.Save.Peoples.Where(x => !Guid.Equals(x.Guid, employee.Guid)).ToList();
+                        this._creationVM.Save.Peoples.Add(employee);
+                        data.Saves.Add(this._creationVM.Save);
                         data.Write();
                         CloseWindows();
                     }
