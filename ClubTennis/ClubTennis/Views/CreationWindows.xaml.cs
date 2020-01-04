@@ -91,7 +91,7 @@ namespace ClubTennis.Views
                         Data data = new Data();
                         data.Load();
                         this._creationVM.Save.Peoples.Add(member);
-                        data.Saves.Add(this._creationVM.Save);
+                        data.AddSave(this._creationVM.Save);
                         data.Write();
                         CloseWindows();
                     }
@@ -107,7 +107,7 @@ namespace ClubTennis.Views
                             Data data = new Data();
                             data.Load();
                             this._creationVM.Save.Peoples.Add(trainer);
-                            data.Saves.Add(this._creationVM.Save);
+                            data.AddSave(this._creationVM.Save);
                             data.Write();
                         }
                         else
@@ -116,7 +116,7 @@ namespace ClubTennis.Views
                             Data data = new Data();
                             data.Load();
                             this._creationVM.Save.Peoples.Add(administration);
-                            data.Saves.Add(this._creationVM.Save);
+                            data.AddSave(this._creationVM.Save);
                             data.Write();
                         }
                         CloseWindows();
@@ -135,7 +135,7 @@ namespace ClubTennis.Views
                         data.Load();
                         this._creationVM.Save.Peoples = this._creationVM.Save.Peoples.Where(x => !Guid.Equals(x.Guid, member.Guid)).ToList();
                         this._creationVM.Save.Peoples.Add(member);
-                        data.Saves.Add(this._creationVM.Save);
+                        data.AddSave(this._creationVM.Save);
                         data.Write();
                         CloseWindows();
                     }
@@ -150,7 +150,7 @@ namespace ClubTennis.Views
                         data.Load();
                         this._creationVM.Save.Peoples = this._creationVM.Save.Peoples.Where(x => !Guid.Equals(x.Guid, ((People)employee).Guid)).ToList();
                         this._creationVM.Save.Peoples.Add((People)employee);
-                        data.Saves.Add(this._creationVM.Save);
+                        data.AddSave(this._creationVM.Save);
                         data.Write();
                         CloseWindows();
                     }

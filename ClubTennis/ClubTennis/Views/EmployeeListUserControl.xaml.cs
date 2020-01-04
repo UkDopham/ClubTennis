@@ -203,7 +203,7 @@ namespace ClubTennis.Views
                 Data data = new Data();
                 data.Load();
                 this._save.Peoples.Remove(people);
-                data.Saves.Add(this._save);
+                data.AddSave(this._save);
 
                 data.Write();
                 InitializeList(this._save.Peoples);

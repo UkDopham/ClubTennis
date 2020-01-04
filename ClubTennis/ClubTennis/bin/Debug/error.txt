@@ -1,1 +1,2 @@
-Impossible de convertir l'objet de type 'System.String' en type 'ClubTennis.Models.ClassementEnum'.
+L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index

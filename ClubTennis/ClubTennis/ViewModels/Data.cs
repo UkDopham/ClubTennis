@@ -162,8 +162,7 @@ namespace ClubTennis.Models
         private void WriteTitles()
         {
             this._saveTitles = new List<string>();
-
-            foreach(Save save in this._saves)
+            foreach (Save save in this._saves)
             {
                 this._saveTitles.Add(save.Club.Name);
             }
