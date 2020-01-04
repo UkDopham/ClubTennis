@@ -15,7 +15,19 @@ namespace ClubTennis.Models
         private GenderEnum _gender;
         private string _adress;
         private Guid _guid;
+        private DateTime _birthdate;
 
+        public DateTime Birthdate
+        {
+            get
+            {
+                return this._birthdate;
+            }
+            set
+            {
+                this._birthdate = value;
+            }
+        }
         public Guid Guid
         {
             get
@@ -71,8 +83,10 @@ namespace ClubTennis.Models
             string lastName,
             string phoneNumber,
             GenderEnum gender,
-            string adress)
+            string adress,
+            DateTime birthdate)
         {
+            this._birthdate = birthdate;
             this._firstName = firstName;
             this._lastName = lastName;
             this._phoneNumber = phoneNumber;
@@ -87,8 +101,10 @@ namespace ClubTennis.Models
             string phoneNumber,
             GenderEnum gender,
             string adress,
+            DateTime birthdate,
             Guid guid)
         {
+            this._birthdate = birthdate;
             this._firstName = firstName;
             this._lastName = lastName;
             this._phoneNumber = phoneNumber;

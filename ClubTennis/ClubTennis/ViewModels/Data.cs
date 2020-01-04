@@ -58,6 +58,7 @@ namespace ClubTennis.Models
         {
             this._serializer = new BinaryFormatter();
             this._saves = new List<Save>();
+            this._users = new List<User>();
         }
       
         /// <summary>

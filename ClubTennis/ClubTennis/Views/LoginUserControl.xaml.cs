@@ -39,7 +39,7 @@ namespace ClubTennis.Views
             }
         }
         private void LoginButtonClick(object sender, RoutedEventArgs e)
-        {           
+        {
             if (this._loginVM.IsCorrectID(UsernameTextBox.Text, PasswordBox.Password))
             {
                 Window fenetre = Window.GetWindow(this);

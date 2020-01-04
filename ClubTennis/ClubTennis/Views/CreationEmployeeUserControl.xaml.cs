@@ -25,7 +25,7 @@ namespace ClubTennis.Views
         private Grid _mainGrid;
         private bool _isTrainer;
         private bool _isStarted;
-        private Employee _employee;
+        private IEmployee _employee;
         private Guid _guid;
 
         public Guid Guid
@@ -40,7 +40,7 @@ namespace ClubTennis.Views
             }
         }
 
-        public Employee Employee
+        public IEmployee Employee
         {
             get
             {
@@ -62,23 +62,24 @@ namespace ClubTennis.Views
             this._isTrainer = false;
         }
 
-        public CreationEmployeeUserControl(Employee employee)
+        public CreationEmployeeUserControl(IEmployee employee)
         {
-            this._guid = employee.Guid;
+            this._guid = ((Member)employee).Guid;
             this._employee = employee;
             this._isStarted = false;
             InitializeComponent();
             this._mainGrid = MainGrid;
-            PrenomTextBox.Text = employee.FirstName;
-            NomTextBox.Text = employee.LastName;
-            PhoneTextBox.Text = employee.PhoneNumber;
-            GenreComboBox.SelectedIndex = Convert.ToInt32(employee.Gender) - 1;
-            AdressTextBox.Text = employee.Adress;
+            PrenomTextBox.Text = ((Member)employee).FirstName;
+            NomTextBox.Text = ((Member)employee).LastName;
+            PhoneTextBox.Text = ((Member)employee).PhoneNumber;
+            GenreComboBox.SelectedIndex = Convert.ToInt32(((Member)employee).Gender) - 1;
+            AdressTextBox.Text = ((Member)employee).Adress;
             SalaryTextBox.Text = employee.Salary.ToString();
-            IBANTextBox.Text = employee.BankDetails.Iban;
-            RIBTextBox.Text = employee.BankDetails.Rib;
+            IBANTextBox.Text = employee.BankDetails?.Iban;
+            RIBTextBox.Text = employee.BankDetails?.Rib;
             EntryDatePicker.SelectedDate = employee.EntryDate;
-            this._isTrainer = employee.GetType() == PostEnum.Trainer;
+            BirthDatePicker.SelectedDate = ((Member)employee).Birthdate;
+            this._isTrainer = ((Member)employee).GetType() == PostEnum.Trainer;
 
             if (this._isTrainer)
             {
@@ -96,14 +97,10 @@ namespace ClubTennis.Views
         {
             return !string.IsNullOrEmpty(PrenomTextBox.Text) &&
                 !string.IsNullOrEmpty(NomTextBox.Text) &&
-                !string.IsNullOrEmpty(PhoneTextBox.Text) &&
                 !string.IsNullOrEmpty(AdressTextBox.Text) &&
-                !string.IsNullOrEmpty(SalaryTextBox.Text) &&
-                !string.IsNullOrEmpty(IBANTextBox.Text) &&
-                !string.IsNullOrEmpty(RIBTextBox.Text) &&
-                EntryDatePicker.SelectedDate != null;
+                BirthDatePicker.SelectedDate != null;
         }
-        public Employee GetEmployee()
+        public IEmployee GetEmployee()
         {
             if (Guid.Equals(this._guid, Guid.Empty))
             {
@@ -115,6 +112,7 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                     (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                     AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                     new BankDetails(RIBTextBox.Text, IBANTextBox.Text),
                     Convert.ToInt32(SalaryTextBox.Text),
                     (DateTime)EntryDatePicker.SelectedDate,
@@ -128,6 +126,7 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                     (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                     AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                     new BankDetails(RIBTextBox.Text, IBANTextBox.Text),
                     Convert.ToInt32(SalaryTextBox.Text),
                     (DateTime)EntryDatePicker.SelectedDate);
@@ -143,6 +142,7 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                     (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                     AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                     new BankDetails(RIBTextBox.Text, IBANTextBox.Text),
                     Convert.ToInt32(SalaryTextBox.Text),
                     (DateTime)EntryDatePicker.SelectedDate,
@@ -157,6 +157,7 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                     (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                     AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                     new BankDetails(RIBTextBox.Text, IBANTextBox.Text),
                     Convert.ToInt32(SalaryTextBox.Text),
                     (DateTime)EntryDatePicker.SelectedDate,
@@ -204,7 +205,7 @@ namespace ClubTennis.Views
             Grid.SetColumn(comboBox, 1);
 
             MainGrid.Children.Add(grid);
-            Grid.SetRow(grid, 9);
+            Grid.SetRow(grid, 10);
         }
         private void JobComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

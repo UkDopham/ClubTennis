@@ -6,7 +6,64 @@
              xmlns:local="clr-namespace:ClubTennis.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Yellow">
-            
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <!--Info bar-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Stats tournois-->
+            <Grid Background="{StaticResource Queen blue}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="pack://siteoforigin:,,,/Resources/yoga.png"
+                       Opacity="0.3"
+                       Margin="5"/>
+                
+                
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="2"
+                           FontSize="16"
+                           Text="Prochains tournois"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+
+            <ScrollViewer Grid.Column="1"
+                          VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Horizontal"
+                            x:Name="NextTournamentStackPanel"/>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Création d'un tournois"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       Margin="10,0"/>
+        </Grid>
     </Grid>
 </UserControl>

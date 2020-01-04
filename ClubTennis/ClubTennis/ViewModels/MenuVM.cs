@@ -1,9 +1,11 @@
 ﻿using ClubTennis.Models;
+using ClubTennis.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace ClubTennis.ViewModels
 {
@@ -11,7 +13,19 @@ namespace ClubTennis.ViewModels
     {
         private User _user;
         private Save _save;
-
+        private UserControl _ongletUserControl;
+        public UserControl OngletUserControl
+        {
+            get
+            {
+                return this._ongletUserControl;
+            }
+            set
+            {
+                this._ongletUserControl = value;
+                OnPropertyChanged("OngletUserControl");
+            }
+        }
         public User User
         {
             get
@@ -41,6 +55,7 @@ namespace ClubTennis.ViewModels
         {
             this._user = user;
             this._save = save;
+            this._ongletUserControl = new MemberUserControl(save);
         }
     }
 }

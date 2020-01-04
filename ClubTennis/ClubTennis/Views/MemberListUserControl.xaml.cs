@@ -110,20 +110,20 @@ namespace ClubTennis.Views
 
             TextBlock phone = GetTextBlock(people.PhoneNumber, defaultMargin);
 
-            TextBlock adress = GetTextBlock(people.Adress, defaultMargin);
+            TextBlock age = GetTextBlock((DateTime.Now.Year - people.Birthdate.Year).ToString(), defaultMargin);
 
             TextBlock statut = GetTextBlock(((Member)people).HasPaid.ToString(), defaultMargin);//TODO CONVERTER
 
             TextBlock gender = GetTextBlock(people.Gender.ToString(), defaultMargin);
 
-            TextBlock classement = GetTextBlock(((Member)people).Classement, defaultMargin);
+            TextBlock classement = GetTextBlock(((Member)people).Classement.ToString(), defaultMargin);
 
             Grid menu = GetGrid(people);
 
             //grid.Children.Add(checkBox);
             grid.Children.Add(name);
             grid.Children.Add(phone);
-            grid.Children.Add(adress);
+            grid.Children.Add(age);
             grid.Children.Add(statut);
             grid.Children.Add(gender);
             grid.Children.Add(classement);
@@ -132,7 +132,7 @@ namespace ClubTennis.Views
             //Grid.SetColumn(checkBox, 0);
             Grid.SetColumn(name, 0);
             Grid.SetColumn(phone, 1);
-            Grid.SetColumn(adress, 2);
+            Grid.SetColumn(age, 2);
             Grid.SetColumn(statut, 3);
             Grid.SetColumn(gender, 4);
             Grid.SetColumn(classement, 5);

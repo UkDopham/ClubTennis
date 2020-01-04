@@ -33,26 +33,30 @@ namespace ClubTennis.Views
         public CreationMemberUserControl()
         {
             InitializeComponent();
+            ClassementComboBox.ItemsSource = Enum.GetValues(typeof(ClassementEnum));
+            ClassementComboBox.SelectedIndex = 0;
         }
         public CreationMemberUserControl(Member member)
         {
             this._guid = member.Guid;
             InitializeComponent();
+            ClassementComboBox.ItemsSource = Enum.GetValues(typeof(ClassementEnum));
             PrenomTextBox.Text = member.FirstName;
             NomTextBox.Text = member.LastName;
             PhoneTextBox.Text = member.PhoneNumber;
-            GenreComboBox.SelectedIndex = Convert.ToInt32(member.Gender) - 1;
+            GenreComboBox.SelectedIndex = Convert.ToInt32(member.Gender) - 1; //-1 car dans l'enum la premiere valeur est "tout"
             AdressTextBox.Text = member.Adress;
             PaymentCheckBox.IsChecked = member.HasPaid;
-            ClassementComboBox.SelectedIndex = member.ClassementValue();
+            ClassementComboBox.SelectedIndex = Convert.ToInt32(member.Classement);
+            BirthDatePicker.SelectedDate = member.Birthdate;
         }
 
         public bool IsAllFill()
         {
             return !string.IsNullOrEmpty(PrenomTextBox.Text) &&
                 !string.IsNullOrEmpty(NomTextBox.Text) &&
-                !string.IsNullOrEmpty(PhoneTextBox.Text) &&
-                !string.IsNullOrEmpty(AdressTextBox.Text);
+                !string.IsNullOrEmpty(AdressTextBox.Text) &&
+                BirthDatePicker.SelectedDate != null;
         }
         public Member GetMember()
         {
@@ -63,6 +67,7 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                    (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                    AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                    (bool)PaymentCheckBox.IsChecked) :
 
                    new Member(PrenomTextBox.Text,
@@ -70,8 +75,9 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                    (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                    AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                    (bool)PaymentCheckBox.IsChecked,
-                   ClassementComboBox.SelectedIndex.ToString());//TODO ENUM classement
+                   (ClassementEnum)ClassementComboBox.SelectedIndex);//TODO ENUM classement
             }
             else
             {
@@ -80,6 +86,7 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                    (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                    AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                    (bool)PaymentCheckBox.IsChecked,
                    this._guid) :
 
@@ -88,8 +95,9 @@ namespace ClubTennis.Views
                     PhoneTextBox.Text,
                    (GenderEnum)(GenreComboBox.SelectedIndex + 1),
                    AdressTextBox.Text,
+                    (DateTime)BirthDatePicker.SelectedDate,
                    (bool)PaymentCheckBox.IsChecked,
-                   ClassementComboBox.SelectedIndex.ToString(),
+                   (ClassementEnum)ClassementComboBox.SelectedIndex,
                    this._guid);//TODO ENUM classement
             }
         }

@@ -23,7 +23,7 @@ namespace ClubTennis.Views
     /// <summary>
     /// Logique d'interaction pour MemberUserControl.xaml
     /// </summary>
-    public partial class MemberUserControl : UserControl, ISave 
+    public partial class MemberUserControl : UserControl
     {
         private MemberVM _memberVM;
         private List<People> _peoples;
@@ -33,32 +33,7 @@ namespace ClubTennis.Views
         private bool _alfabetSorted;
         private bool _classementSorted;
 
-        public int Members
-        {
-            get
-            {
-                return this._memberVM.SelectedUserControl.Save.Peoples.Where(x => x.GetType() == PostEnum.Member).Count();
-            }
-        }
-
-        public int Trainers
-        {
-            get
-            {
-                return this._memberVM.SelectedUserControl.Save.Peoples.Where(x => x.GetType() == PostEnum.Trainer).Count();
-            }
-        }
-
-        public int MembershipLate
-        {
-            get
-            {
-                return this._memberVM.SelectedUserControl.Save.Peoples.Where(x => x.GetType() == PostEnum.Member).Where(x => !((Member)x).HasPaid).Count();
-            }
-        }
         private List<Filter> _activeFilters; //Stockage des filtres actifs
-
-
         public MemberVM MemberVM
         {
             get

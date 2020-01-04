@@ -12,7 +12,7 @@ namespace ClubTennis.Models.Filters
         {
             List<People> tmp = new List<People>();
             peoples.ForEach(x => tmp.Add(x));
-            tmp.Sort((x, y) => ((Member)x).ClassementValue().CompareTo(((Member)y).ClassementValue()));
+            tmp.Sort((x, y) => ((Member)x).Classement.CompareTo(((Member)y).Classement));
 
             return tmp;
         }

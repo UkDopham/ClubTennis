@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
-    public enum GenderEnum
+    public enum CompetitionTypeEnum
     {
-        all,
-        man,
-        woman,
-        other,
-        child,
+        solo,
+        duo,
+        team,
     }
 }

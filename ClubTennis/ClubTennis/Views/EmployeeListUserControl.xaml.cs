@@ -108,30 +108,31 @@ namespace ClubTennis.Views
             //};
             //this._checkBoxes.Add(checkBox);
 
+
             TextBlock name = GetTextBlock(people.LastName, defaultMargin);
 
             TextBlock phone = GetTextBlock(people.PhoneNumber, defaultMargin);
 
-            TextBlock adress = GetTextBlock(people.Adress, defaultMargin);
+            TextBlock age = GetTextBlock((DateTime.Now.Year - people.Birthdate.Year).ToString(), defaultMargin);
 
             TextBlock post = GetTextBlock(people.GetType().ToString(), defaultMargin);//TODO CONVERTER
 
             TextBlock gender = GetTextBlock(people.Gender.ToString(), defaultMargin);
 
-            TextBlock salary = GetTextBlock(((Employee)people).Salary.ToString(), defaultMargin);
+            TextBlock salary = GetTextBlock(((IEmployee)people).Salary.ToString(), defaultMargin);
 
-            TextBlock date = GetTextBlock(((Employee)people).EntryDate.ToString("d"), defaultMargin);
+            TextBlock date = GetTextBlock(((IEmployee)people).EntryDate.ToString("d"), defaultMargin);
 
-            TextBlock rib = GetTextBlock(((Employee)people).BankDetails.Rib, defaultMargin);
+            TextBlock rib = GetTextBlock(((IEmployee)people).BankDetails?.Rib, defaultMargin);
 
-            TextBlock iban = GetTextBlock(((Employee)people).BankDetails.Iban, defaultMargin);
+            TextBlock iban = GetTextBlock(((IEmployee)people).BankDetails?.Iban, defaultMargin);
 
             Grid menu = GetGrid(people);
 
             //grid.Children.Add(checkBox);
             grid.Children.Add(name);
             grid.Children.Add(phone);
-            grid.Children.Add(adress);
+            grid.Children.Add(age);
             grid.Children.Add(post);
             grid.Children.Add(gender);
             grid.Children.Add(salary);
@@ -143,7 +144,7 @@ namespace ClubTennis.Views
             //Grid.SetColumn(checkBox, 0);
             Grid.SetColumn(name, 0);
             Grid.SetColumn(phone, 1);
-            Grid.SetColumn(adress, 2);
+            Grid.SetColumn(age, 2);
             Grid.SetColumn(post, 3);
             Grid.SetColumn(gender, 4);
             Grid.SetColumn(salary, 5);

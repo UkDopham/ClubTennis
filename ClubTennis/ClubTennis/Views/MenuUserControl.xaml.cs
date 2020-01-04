@@ -25,16 +25,13 @@ namespace ClubTennis.Views
         private MenuVM _menu;
         private List<Button> _buttons;
 
-        private MemberUserControl _memberUserControl;
-
-        public MemberUserControl MemberUserControl
+        public string Username
         {
             get
             {
-                return this._memberUserControl;
+                return this._menu.User.Username;
             }
-        }
-        
+        }        
         public MenuUserControl(Save save, User user)
         {
             InitializeComponent();
@@ -42,7 +39,7 @@ namespace ClubTennis.Views
             this._menu = new MenuVM(save, user);
             SideMenuGrid.Visibility = Visibility.Hidden;
 
-            DataContext = new MemberUserControl(this._menu.Save);
+            DataContext = this._menu;
             MemberButton.Background = SolidColorBrushHelper.DarkGreen();
         }
 
@@ -77,8 +74,7 @@ namespace ClubTennis.Views
 
         private void MemberButtonClick(object sender, RoutedEventArgs e)
         {
-            this._memberUserControl = new MemberUserControl(this._menu.Save);
-            DataContext = this._memberUserControl;
+            this._menu.OngletUserControl = new MemberUserControl(this._menu.Save);
 
             UnselectedButtonsColorization(MemberButton);
             MemberButton.Background = SolidColorBrushHelper.DarkGreen(); 
@@ -86,10 +82,15 @@ namespace ClubTennis.Views
 
         private void TournamentButtonClick(object sender, RoutedEventArgs e)
         {
-            DataContext = new TournamentUserControl(this._menu.Save);
+            this._menu.OngletUserControl = new TournamentUserControl(this._menu.Save);
 
             UnselectedButtonsColorization(TournamentButton);
             TournamentButton.Background = SolidColorBrushHelper.DarkGreen();
+        }
+
+        private void StatButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

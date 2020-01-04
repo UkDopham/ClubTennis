@@ -58,7 +58,7 @@
             <Grid Grid.Column="2"
                   Background="{StaticResource GrisClaireBackground}"
                   Margin="1,0">
-                <TextBlock  Text="Adresse"
+                <TextBlock  Text="Age"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             FontSize="15"/>
@@ -94,7 +94,7 @@
             <Grid Grid.Column="6"
                   Background="{StaticResource GrisClaireBackground}"
                   Margin="1,0">
-                <TextBlock  Text="Date"
+                <TextBlock  Text="Entrée"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             FontSize="15"/>

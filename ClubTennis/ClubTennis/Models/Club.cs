@@ -12,6 +12,7 @@ namespace ClubTennis.Models
         private string _name;
         private Administration _administration;
         private List<Trainer> _trainers;
+        private string _city;
 
         public string Name
         {
@@ -20,8 +21,9 @@ namespace ClubTennis.Models
                 return this._name;
             }
         }
-        public Club(string name, Administration administration, List<Trainer> trainers)
+        public Club(string name, Administration administration, List<Trainer> trainers, string city)
         {
+            this._city = city;
             this._name = name;
             this._administration = administration;
             this._trainers = trainers;

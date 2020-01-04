@@ -34,15 +34,15 @@
                 <Image Source="pack://siteoforigin:,,,/Resources/balllow.png"
                        Margin="5"/>
 
-                <TextBlock Text="TCM"
+                <TextBlock Text="Tennis"
                                FontSize="25"
-                               Foreground="{StaticResource VertBackground}"
+                               Foreground="{StaticResource VertButtonType}"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                Margin="5"/>
 
-                <TextBlock Text="2020"
-                               FontSize="25"
+                <TextBlock Text="Club"
+                               FontSize="22"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                Margin="5"/>
@@ -182,11 +182,29 @@
 
                 </Button>
 
-                <Grid Grid.Row="2"
-                      Margin="0,1"
-                      Background="Red">
+                <Button x:Name="StatButton"
+                        Grid.Row="2"
+                        Margin="0,1"
+                        Background="{StaticResource VertButtonType}"
+                        BorderThickness="0"
+                        Click="StatButton_Click">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                </Grid>
+                        <Image Grid.Column="0"/>
+
+                        <TextBlock Grid.Column="1"
+                                   Text="Statistique"
+                                   VerticalAlignment="Center"
+                                   Foreground="White"
+                                   Margin="5"
+                                   FontSize="15"/>
+                    </Grid>
+
+                </Button>
 
                 <Grid Grid.Row="3"
                       Margin="0,1"
@@ -204,138 +222,11 @@
             <Grid Grid.Column="1"
                   Margin="30">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--Stats Grid-->
                 <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0"
-                          Margin="50,0,50,20"
-                          Background="{StaticResource Queen blue}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Column="1"
-                                   Grid.Row="2"
-                                   Text="Membres"
-                                   VerticalAlignment="Center"
-                                   FontSize="12"
-                                   Foreground="White"
-                                   Margin="1"/>
-
-                        <Image Grid.Column="0"
-                               Margin="10,2"
-                               Opacity="0.5"
-                               HorizontalAlignment="Left"
-                               Grid.Row="0" Source="pack://siteoforigin:,,,/Resources/yoga.png"
-                               />
-                        <TextBlock Grid.Column="0"
-                                   Grid.Row="1"
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding Members}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontSize="25"
-                                   Margin="5"
-                                   Foreground="White"/>
-                    </Grid>
-
-                    <Grid Grid.Column="1"
-                          Margin="50,0,50,20"
-                          Background="{StaticResource Radical red}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Column="1"
-                                   Grid.Row="2"
-                                   Text="Entraineurs"
-                                   VerticalAlignment="Center"
-                                   FontSize="12"
-                                   Foreground="White"
-                                   Margin="1"/>
-
-                        <Image Grid.Column="0"
-                               Margin="10,2"
-                               Opacity="0.5"
-                               HorizontalAlignment="Left"
-                               Grid.Row="0" Source="pack://siteoforigin:,,,/Resources/triangle.png"
-                               />
-                        <TextBlock Grid.Column="0"
-                                   Grid.Row="1"
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding Trainers}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontSize="25"
-                                   Margin="5"
-                                   Foreground="White"/>
-                    </Grid>
-
-                    <Grid Grid.Column="2"
-                          Margin="50,0,50,20"
-                          Background="{StaticResource VertButtonType}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Column="0"
-                                   Grid.ColumnSpan="2"
-                                   Grid.Row="2"
-                                   Text="Retards dans l'abonnement"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontSize="12"
-                                   Foreground="White"
-                                   Margin="1"/>
-
-                        <Image Grid.Column="0"
-                               Margin="10,2"
-                               Opacity="0.5"
-                               HorizontalAlignment="Left"
-                               Grid.Row="0" Source="pack://siteoforigin:,,,/Resources/calendar.png"
-                               />
-                        <TextBlock Grid.Column="0"
-                                   Grid.Row="1"
-                                   Grid.ColumnSpan="2"
-                                   Text="{Binding MembershipLate}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontSize="25"
-                                   Margin="5"
-                                   Foreground="White"/>
-                    </Grid>
-                    
-                </Grid>
-
-                <Grid Grid.Row="1">
-                    <ContentControl Content="{Binding}"/>
+                    <ContentControl Content="{Binding OngletUserControl}"/>
                 </Grid>
 
             </Grid>

@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.Models
 {
-    public enum GenderEnum
+    public class Participant
     {
-        all,
-        man,
-        woman,
-        other,
-        child,
+        private People _people;
+        private bool _hasPlayed;
     }
 }

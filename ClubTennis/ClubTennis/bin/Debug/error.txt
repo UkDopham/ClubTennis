@@ -1,1 +1,1 @@
-La référence d'objet n'est pas définie à une instance d'un objet.
+Impossible de convertir l'objet de type 'System.String' en type 'ClubTennis.Models.ClassementEnum'.

@@ -18,6 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -219,6 +220,25 @@
                 </ComboBoxItem>
             </ComboBox>
         </Grid>
-        
+
+        <Grid Grid.Row="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                   Text="Date de naissance"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="14"/>
+
+            <DatePicker Grid.Column="1"
+                        Margin="10"
+                        x:Name="BirthDatePicker"
+                        HorizontalContentAlignment="Center"
+                        VerticalAlignment="Center"/>
+        </Grid>
+
     </Grid>
 </UserControl>

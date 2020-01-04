@@ -48,7 +48,7 @@ namespace ClubTennis.Views
             }
             else
             {
-                Employee employee = people as Employee;
+                IEmployee employee = people as IEmployee;
                 this._creationVM.CreationUserControl = new CreationEmployeeUserControl(employee);
                 TitleButton.Content = "Salarié";
             }
@@ -145,11 +145,11 @@ namespace ClubTennis.Views
                     CreationEmployeeUserControl creationMemberUserControl = (CreationEmployeeUserControl)this._creationVM.CreationUserControl;
                     if (creationMemberUserControl.IsAllFill())
                     {
-                        Employee employee = creationMemberUserControl.GetEmployee();
+                        IEmployee employee = creationMemberUserControl.GetEmployee();
                         Data data = new Data();
                         data.Load();
-                        this._creationVM.Save.Peoples = this._creationVM.Save.Peoples.Where(x => !Guid.Equals(x.Guid, employee.Guid)).ToList();
-                        this._creationVM.Save.Peoples.Add(employee);
+                        this._creationVM.Save.Peoples = this._creationVM.Save.Peoples.Where(x => !Guid.Equals(x.Guid, ((People)employee).Guid)).ToList();
+                        this._creationVM.Save.Peoples.Add((People)employee);
                         data.Saves.Add(this._creationVM.Save);
                         data.Write();
                         CloseWindows();

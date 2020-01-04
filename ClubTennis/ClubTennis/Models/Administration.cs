@@ -7,20 +7,44 @@ using System.Threading.Tasks;
 namespace ClubTennis.Models
 {
     [Serializable]
-    public class Administration : Employee
+    public class Administration : People , IEmployee
     {
-        public Administration(
-            string firstName,
-            string lastName,
-            string phoneNumber,
-            GenderEnum gender,
-            string adress,
-            BankDetails bankDetails,
-            int salary,
-            DateTime entryDate)
-            : base(firstName, lastName, phoneNumber, gender, adress, bankDetails, salary, entryDate)
-        {
+        private DateTime _entryDate;
+        private int _salary;
+        private BankDetails _bankDetails;
 
+    public BankDetails BankDetails
+        {
+            get
+            {
+                return this._bankDetails;
+            }
+            set
+            {
+                this._bankDetails = value;
+            }
+        }
+        public int Salary 
+        {
+            get
+            {
+                return this._salary;
+            }
+            set
+            {
+                this._salary = value;
+            }
+        }
+        public DateTime EntryDate 
+        {
+            get
+            {
+                return this._entryDate;
+            }
+            set
+            {
+                this._entryDate = value;
+            }
         }
 
         public Administration(
@@ -29,13 +53,33 @@ namespace ClubTennis.Models
             string phoneNumber,
             GenderEnum gender,
             string adress,
+            DateTime birthdate,
+            BankDetails bankDetails,
+            int salary,
+            DateTime entryDate)
+            : base(firstName, lastName, phoneNumber, gender, adress, birthdate)
+        {
+            this._entryDate = entryDate;
+            this._bankDetails = bankDetails;
+            this._salary = salary;
+        }
+
+        public Administration(
+            string firstName,
+            string lastName,
+            string phoneNumber,
+            GenderEnum gender,
+            string adress,
+            DateTime birthdate,
             BankDetails bankDetails,
             int salary,
             DateTime entryDate,
             Guid guid)
-            : base(firstName, lastName, phoneNumber, gender, adress, bankDetails, salary, entryDate, guid)
+            : base(firstName, lastName, phoneNumber, gender, adress, birthdate)
         {
-
+            this._entryDate = entryDate;
+            this._bankDetails = bankDetails;
+            this._salary = salary;
         }
         public override PostEnum GetType()
         {

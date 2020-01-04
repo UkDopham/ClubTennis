@@ -57,6 +57,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ClassementEnum.cs" />
+    <Compile Include="Models\Competition.cs" />
+    <Compile Include="Models\CompetitionAgeTypeEnum.cs" />
+    <Compile Include="Models\CompetitionTypeEnum.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Filters\AlfabetFilter.cs" />
     <Compile Include="Models\ExtensionHelper.cs" />
     <Compile Include="Models\Filters\CompetitionFilter.cs" />
@@ -69,11 +74,16 @@
     <Compile Include="Models\Filters\LoisirFilter.cs" />
     <Compile Include="Models\Filters\PaidFilter.cs" />
     <Compile Include="Models\Filters\SearchFilter.cs" />
+    <Compile Include="Models\IEmployee.cs" />
+    <Compile Include="Models\Internship.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\PaymentEnum.cs" />
     <Compile Include="Models\PostEnum.cs" />
     <Compile Include="Models\Save.cs" />
     <Compile Include="Models\SolidColorBrushHelper.cs" />
     <Compile Include="Models\SortEnum.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\CreationVM.cs" />
     <Compile Include="ViewModels\CustomCheckBox.cs" />
@@ -122,7 +132,6 @@
     <Compile Include="Models\BankDetails.cs" />
     <Compile Include="Models\Club.cs" />
     <Compile Include="ViewModels\Data.cs" />
-    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\GenderEnum.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\People.cs" />
