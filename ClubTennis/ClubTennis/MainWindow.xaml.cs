@@ -29,6 +29,7 @@ namespace ClubTennis
             this._loginUserControl = new LoginUserControl();
             DataContext = this._loginUserControl;
 
+            //hey you
             //Member john = new Member(
             //    "john",
             //    "Watson",
