@@ -66,8 +66,9 @@ namespace ClubTennis.Models
             BankDetails bankDetails,
             int salary,
             DateTime entryDate,
+            ClassementEnum classement,
             TrainerPositionEnum position)
-            : base(firstName, lastName, phoneNumber, gender, adress, birthdate, true)
+            : base(firstName, lastName, phoneNumber, gender, adress, birthdate, true, classement) 
         {
             this._bankDetails = bankDetails;
             this._salary = salary;
@@ -85,9 +86,10 @@ namespace ClubTennis.Models
             BankDetails bankDetails,
             int salary,
             DateTime entryDate,
+            ClassementEnum classement,
             TrainerPositionEnum position,
             Guid guid)
-            : base(firstName, lastName, phoneNumber, gender, adress, birthdate, true, guid)
+            : base(firstName, lastName, phoneNumber, gender, adress, birthdate, true, classement ,guid)
         {
             this._position = position;
         }

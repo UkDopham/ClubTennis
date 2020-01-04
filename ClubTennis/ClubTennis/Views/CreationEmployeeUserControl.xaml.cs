@@ -21,7 +21,8 @@ namespace ClubTennis.Views
     /// </summary>
     public partial class CreationEmployeeUserControl : UserControl
     {
-        private ComboBox _trainerComboBox;
+        private ComboBox _statutComboBox;
+        private ComboBox _classementComboBox;
         private Grid _mainGrid;
         private bool _isTrainer;
         private bool _isStarted;
@@ -84,8 +85,9 @@ namespace ClubTennis.Views
             if (this._isTrainer)
             {
                 JobComboBox.SelectedIndex = 0;
-                this._trainerComboBox.SelectedIndex = Convert.ToInt32(((Trainer)employee).Position);
-                CreateNewGrid();
+                this._statutComboBox.SelectedIndex = Convert.ToInt32(((Trainer)employee).Position);
+                this._classementComboBox.SelectedIndex = Convert.ToInt32(((Trainer)employee).Classement);
+                CreateGrid();
             }
             else
             {
@@ -116,7 +118,8 @@ namespace ClubTennis.Views
                     new BankDetails(RIBTextBox.Text, IBANTextBox.Text),
                     Convert.ToInt32(SalaryTextBox.Text),
                     (DateTime)EntryDatePicker.SelectedDate,
-                    (TrainerPositionEnum)this._trainerComboBox.SelectedIndex);
+                    (ClassementEnum)this._classementComboBox.SelectedIndex,
+                    (TrainerPositionEnum)this._statutComboBox.SelectedIndex);
                 }
                 else
                 {
@@ -146,7 +149,8 @@ namespace ClubTennis.Views
                     new BankDetails(RIBTextBox.Text, IBANTextBox.Text),
                     Convert.ToInt32(SalaryTextBox.Text),
                     (DateTime)EntryDatePicker.SelectedDate,
-                    (TrainerPositionEnum)this._trainerComboBox.SelectedIndex,
+                    (ClassementEnum)this._classementComboBox.SelectedIndex,
+                    (TrainerPositionEnum)this._statutComboBox.SelectedIndex,
                     this._guid);
                 }
                 else
@@ -165,7 +169,12 @@ namespace ClubTennis.Views
                 }
             }
         }
-        private void CreateNewGrid()
+        private void CreateGrid()
+        {
+            CreateStatutGrid();
+            CreateClassementGrid();
+        }
+        private void CreateStatutGrid()
         {
             this._isTrainer = true;
             MainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
@@ -192,11 +201,11 @@ namespace ClubTennis.Views
                 Margin = new Thickness(10),
                 VerticalContentAlignment = VerticalAlignment.Center,
                 HorizontalContentAlignment = HorizontalAlignment.Center,
-                ItemsSource = new List<string>() { "Indépendant", "Salarié" },
+                ItemsSource = Enum.GetValues(typeof(TrainerPositionEnum)),
                 SelectedIndex = 0
             };
 
-            this._trainerComboBox = comboBox;
+            this._statutComboBox = comboBox;
 
             grid.Children.Add(text);
             grid.Children.Add(comboBox);
@@ -207,12 +216,54 @@ namespace ClubTennis.Views
             MainGrid.Children.Add(grid);
             Grid.SetRow(grid, 10);
         }
+        private void CreateClassementGrid()
+        {
+            this._isTrainer = true;
+            MainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+
+            Grid grid = new Grid()
+            {
+                ColumnDefinitions =
+                    {
+                        new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
+                        new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
+                    }
+            };
+
+            TextBlock text = new TextBlock()
+            {
+                Text = "Classement",
+                FontSize = 14,
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+            };
+
+            ComboBox comboBox = new ComboBox()
+            {
+                Margin = new Thickness(10),
+                VerticalContentAlignment = VerticalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                ItemsSource = Enum.GetValues(typeof(ClassementEnum)),
+                SelectedIndex = 0
+            };
+
+            this._classementComboBox = comboBox;
+
+            grid.Children.Add(text);
+            grid.Children.Add(comboBox);
+
+            Grid.SetColumn(text, 0);
+            Grid.SetColumn(comboBox, 1);
+
+            MainGrid.Children.Add(grid);
+            Grid.SetRow(grid, 11);
+        }
         private void JobComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // 0 trainer /1 administration
             if (JobComboBox.SelectedIndex == 0)
             {
-                CreateNewGrid();
+                CreateGrid();
             }
             else
             {

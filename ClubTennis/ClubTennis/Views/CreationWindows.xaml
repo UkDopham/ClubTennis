@@ -8,13 +8,13 @@
         Title="CreationWindows" 
         ResizeMode="NoResize"
         WindowStyle="None"
-        Height="700" 
+        Height="900" 
         Width="500">
     <Grid Background="White"
           MouseLeftButtonDown="BorderMouseLeftButtonDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 

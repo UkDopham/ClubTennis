@@ -62,15 +62,7 @@ namespace ClubTennis.Views
         {
             if (Guid.Equals(this._guid, Guid.Empty)) //cas de nouveau membre
             {
-                return ClassementComboBox.SelectedIndex == 0 ? new Member(PrenomTextBox.Text,
-                    NomTextBox.Text,
-                    PhoneTextBox.Text,
-                   (GenderEnum)(GenreComboBox.SelectedIndex + 1),
-                   AdressTextBox.Text,
-                    (DateTime)BirthDatePicker.SelectedDate,
-                   (bool)PaymentCheckBox.IsChecked) :
-
-                   new Member(PrenomTextBox.Text,
+                return new Member(PrenomTextBox.Text,
                     NomTextBox.Text,
                     PhoneTextBox.Text,
                    (GenderEnum)(GenreComboBox.SelectedIndex + 1),
@@ -81,16 +73,7 @@ namespace ClubTennis.Views
             }
             else
             {
-                return ClassementComboBox.SelectedIndex == 0 ? new Member(PrenomTextBox.Text,
-                    NomTextBox.Text,
-                    PhoneTextBox.Text,
-                   (GenderEnum)(GenreComboBox.SelectedIndex + 1),
-                   AdressTextBox.Text,
-                    (DateTime)BirthDatePicker.SelectedDate,
-                   (bool)PaymentCheckBox.IsChecked,
-                   this._guid) :
-
-                   new Member(PrenomTextBox.Text,
+                return new Member(PrenomTextBox.Text,
                     NomTextBox.Text,
                     PhoneTextBox.Text,
                    (GenderEnum)(GenreComboBox.SelectedIndex + 1),

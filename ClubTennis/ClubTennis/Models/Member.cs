@@ -33,19 +33,6 @@ namespace ClubTennis.Models
                 this._hasPaid = value;
             }
         }
-        public Member(
-            string firstName,
-            string lastName,
-            string phoneNumber,
-            GenderEnum gender,
-            string adress,
-            DateTime birthdate,
-            bool hasPaid) 
-            : base (firstName, lastName, phoneNumber, gender, adress, birthdate)
-        {
-            this._hasPaid = hasPaid;
-            this._classement = ClassementEnum.NC;
-        }
 
         public Member(
             string firstName,
@@ -60,21 +47,6 @@ namespace ClubTennis.Models
         {
             this._hasPaid = hasPaid;
             this._classement = classement;
-        }
-
-        public Member(
-            string firstName,
-            string lastName,
-            string phoneNumber,
-            GenderEnum gender,
-            string adress,
-            DateTime birthdate,
-            bool hasPaid,
-            Guid guid)
-            : base(firstName, lastName, phoneNumber, gender, adress, birthdate, guid)
-        {
-            this._hasPaid = hasPaid;
-            this._classement = ClassementEnum.NC;
         }
 
         public Member(
