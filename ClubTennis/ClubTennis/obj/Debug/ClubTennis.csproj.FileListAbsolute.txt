@@ -104,3 +104,8 @@ D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\yoga.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\calendar.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\pilates.png
 D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\triangle.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\restaurant-membership-card-tool128White.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\statistics128white.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\bin\Debug\Resources\tennis-player-with-racket128white.png
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\StatsUserControl.g.cs
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\StatsUserControl.baml

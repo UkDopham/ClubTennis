@@ -233,9 +233,39 @@ namespace ClubTennis.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap restaurant_membership_card_tool128White {
+            get {
+                object obj = ResourceManager.GetObject("restaurant_membership_card_tool128White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap statistics128white {
+            get {
+                object obj = ResourceManager.GetObject("statistics128white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tennis {
             get {
                 object obj = ResourceManager.GetObject("tennis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tennis_player_with_racket128white {
+            get {
+                object obj = ResourceManager.GetObject("tennis_player_with_racket128white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

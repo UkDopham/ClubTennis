@@ -48,12 +48,13 @@ namespace ClubTennis.Views
             this._buttons = new List<Button>();
             this._buttons.Add(MemberButton);
             this._buttons.Add(TournamentButton);
+            this._buttons.Add(StatButton);
         }
 
         private void UnselectedButtonsColorization(Button button)
         {
             List<Button> unselectedButtons = this._buttons.Where(x => !x.Equals(button)).ToList();
-            unselectedButtons.ForEach(x => x.Background = new SolidColorBrush(Colors.White));
+            unselectedButtons.ForEach(x => x.Background = SolidColorBrushHelper.Green());
         }
         private void BorderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -90,7 +91,10 @@ namespace ClubTennis.Views
 
         private void StatButton_Click(object sender, RoutedEventArgs e)
         {
+            this._menu.OngletUserControl = new StatsUserControl();
 
+            UnselectedButtonsColorization(StatButton);
+            MemberButton.Background = SolidColorBrushHelper.DarkGreen();
         }
     }
 }

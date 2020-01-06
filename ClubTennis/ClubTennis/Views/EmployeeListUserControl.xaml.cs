@@ -117,7 +117,7 @@ namespace ClubTennis.Views
 
             TextBlock post = GetTextBlock(people.GetType().ToString(), defaultMargin);//TODO CONVERTER
 
-            TextBlock gender = GetTextBlock(people.Gender.ToString(), defaultMargin);
+            TextBlock gender = GetTextBlock(EnumHelper.GetDescription(people.Gender), defaultMargin);
 
             TextBlock salary = GetTextBlock(((IEmployee)people).Salary.ToString(), defaultMargin);
 

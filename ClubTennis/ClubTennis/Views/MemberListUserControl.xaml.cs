@@ -114,7 +114,7 @@ namespace ClubTennis.Views
 
             TextBlock statut = GetTextBlock(((Member)people).HasPaid.ToString(), defaultMargin);//TODO CONVERTER
 
-            TextBlock gender = GetTextBlock(people.Gender.ToString(), defaultMargin);
+            TextBlock gender = GetTextBlock(EnumHelper.GetDescription(people.Gender), defaultMargin);
 
             TextBlock classement = GetTextBlock(((Member)people).Classement.ToString(), defaultMargin);
 

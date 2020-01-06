@@ -87,6 +87,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\CreationVM.cs" />
     <Compile Include="ViewModels\CustomCheckBox.cs" />
+    <Compile Include="ViewModels\EnumHelper.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\MemberVM.cs" />
     <Compile Include="ViewModels\MenuVM.cs" />
@@ -116,6 +117,9 @@
     </Compile>
     <Compile Include="Views\MenuUserControl.xaml.cs">
       <DependentUpon>MenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatsUserControl.xaml.cs">
+      <DependentUpon>StatsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TournamentUserControl.xaml.cs">
       <DependentUpon>TournamentUserControl.xaml</DependentUpon>
@@ -168,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +327,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\triangle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restaurant-membership-card-tool128White.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statistics128white.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tennis-player-with-racket128white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

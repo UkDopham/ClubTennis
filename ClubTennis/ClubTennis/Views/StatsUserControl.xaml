@@ -1,0 +1,432 @@
+﻿<UserControl x:Class="ClubTennis.Views.StatsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClubTennis.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <!--<Rectangle Fill="{StaticResource VertButtonType}" 
+                   RadiusX="15"
+                   RadiusY="15"/>
+        
+        <Rectangle Fill="{StaticResource GrisClaireBackground}" 
+                   RadiusX="15"
+                   RadiusY="15"
+                   Margin="1"/>-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Statistiques"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       Margin="15,0"
+                       Grid.Row="0"/>
+
+            <Grid Grid.Row="1"
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Rectangle Fill="{StaticResource VertButtonType}" 
+                           RadiusX="15"
+                           RadiusY="15"
+                           Margin="9"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           />
+                <Rectangle Fill="{StaticResource VertButtonType}" 
+                           RadiusX="15"
+                           RadiusY="15"
+                           Margin="9"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           />
+                <Rectangle Fill="{StaticResource VertButtonType}" 
+                           RadiusX="15"
+                           RadiusY="15"
+                           Margin="9"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           />
+                <Rectangle Fill="{StaticResource VertButtonType}" 
+                           RadiusX="15"
+                           RadiusY="15"
+                           Margin="9"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           />
+                <Rectangle Fill="{StaticResource VertButtonType}" 
+                           RadiusX="15"
+                           RadiusY="15"
+                           Margin="9"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           />
+                <Rectangle Fill="{StaticResource VertButtonType}" 
+                           RadiusX="15"
+                           RadiusY="15"
+                           Margin="9"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           />
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Margin="10">
+                    <Rectangle Fill="White" 
+                               RadiusX="15"
+                               RadiusY="15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Opacity="0.3"
+                               Margin="5" Source="pack://siteoforigin:,,,/Resources/yoga.png"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Compétitions réalisées"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DoneCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Compétitions à faire"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="{Binding YetCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="0"
+                      Grid.Column="1"
+                      Margin="10">
+                    <Rectangle Fill="White" 
+                               RadiusX="15"
+                               RadiusY="15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Opacity="0.3"
+                               Margin="5" Source="pack://siteoforigin:,,,/Resources/yoga.png"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Compétitions réalisées"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DoneCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Compétitions à faire"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="{Binding YetCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Grid.Column="0"
+                      Margin="10">
+                    <Rectangle Fill="White" 
+                               RadiusX="15"
+                               RadiusY="15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Opacity="0.3"
+                               Margin="5" Source="pack://siteoforigin:,,,/Resources/yoga.png"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Compétitions réalisées"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DoneCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Compétitions à faire"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="{Binding YetCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Grid.Column="1"
+                      Margin="10">
+                    <Rectangle Fill="White" 
+                               RadiusX="15"
+                               RadiusY="15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Opacity="0.3"
+                               Margin="5" Source="pack://siteoforigin:,,,/Resources/yoga.png"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Compétitions réalisées"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DoneCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Compétitions à faire"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="{Binding YetCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2"
+                      Grid.Column="0"
+                      Margin="10">
+                    <Rectangle Fill="White" 
+                               RadiusX="15"
+                               RadiusY="15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Opacity="0.3"
+                               Margin="5" Source="pack://siteoforigin:,,,/Resources/yoga.png"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Compétitions réalisées"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DoneCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Compétitions à faire"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="{Binding YetCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2"
+                      Grid.Column="1"
+                      Margin="10">
+                    <Rectangle Fill="White" 
+                               RadiusX="15"
+                               RadiusY="15"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+                               Grid.Row="0"
+                               Opacity="0.3"
+                               Margin="5" Source="pack://siteoforigin:,,,/Resources/yoga.png"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="Compétitions réalisées"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DoneCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Compétitions à faire"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="15"
+                                   Foreground="{StaticResource Gris fonce}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="2"
+                                   Text="{Binding YetCompetitions}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="20"
+                                   Foreground="{StaticResource Queen blue}"/>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+    </Grid>
+</UserControl>

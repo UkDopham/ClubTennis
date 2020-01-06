@@ -135,7 +135,7 @@
                 <Button x:Name="MemberButton"
                         Grid.Row="0"
                         Margin="0,1"
-                        Background="White"
+                        Background="{StaticResource VertButtonType}"
                         BorderThickness="0"
                         Click="MemberButtonClick">
                     <Grid>
@@ -145,12 +145,12 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Grid.Column="0" 
-                            Source="pack://siteoforigin:,,,/Resources/restaurant-membership-card-tool (3).png"/>
+                            Source="pack://siteoforigin:,,,/Resources/restaurant-membership-card-tool128White.png"/>
 
                         <TextBlock Grid.Column="1"
                                    Text="Membres"
                                    VerticalAlignment="Center"
-                                   Foreground="{StaticResource VertClaireBackground}"
+                                   Foreground="White"
                                    Margin="5"
                                    FontSize="15"/>
                     </Grid>
@@ -160,7 +160,7 @@
                 <Button x:Name="TournamentButton"
                         Grid.Row="1"
                         Margin="0,1"
-                        Background="White"
+                        Background="{StaticResource VertButtonType}"
                         BorderThickness="0"
                         Click="TournamentButtonClick">
                     <Grid>
@@ -170,12 +170,12 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Grid.Column="0" 
-                            Source="pack://siteoforigin:,,,/Resources/trophy.png"/>
+                            Source="pack://siteoforigin:,,,/Resources/tennis-player-with-racket128white.png"/>
 
                         <TextBlock Grid.Column="1"
                                    Text="Tournois"
                                    VerticalAlignment="Center"
-                                   Foreground="{StaticResource VertClaireBackground}"
+                                   Foreground="White"
                                    Margin="5"
                                    FontSize="15"/>
                     </Grid>
@@ -194,10 +194,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0"/>
+                        <Image Grid.Column="0" 
+                               Source="pack://siteoforigin:,,,/Resources/statistics128white.png"/>
 
                         <TextBlock Grid.Column="1"
-                                   Text="Statistique"
+                                   Text="Statistiques"
                                    VerticalAlignment="Center"
                                    Foreground="White"
                                    Margin="5"
