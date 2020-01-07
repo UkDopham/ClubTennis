@@ -100,7 +100,7 @@ namespace ClubTennis.Views
                     {
                         Member member = creationMemberUserControl.GetMember();
                         Data data = new Data();
-                        data.Load();
+                        data.Load(); //on reload pour enrengistrer car pb de data binding
                         this._creationVM.Save.Peoples.Add(member);
                         data.AddSave(this._creationVM.Save);
                         data.Write();

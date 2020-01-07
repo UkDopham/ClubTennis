@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace ClubTennis.ViewModels
 {
-    public static class EnumHelper
+    public static class EnumHelper 
     {
+        /// <summary>
+        /// Permet d'obtenir la description de n'importe quel Enum
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string GetDescription(Enum value)
         {
             FieldInfo fi = value.GetType().GetField(value.ToString());

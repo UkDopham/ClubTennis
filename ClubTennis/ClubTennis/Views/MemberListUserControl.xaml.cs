@@ -26,7 +26,6 @@ namespace ClubTennis.Views
         private Thickness MARGINENUMCOLOR = new Thickness(15, 5, 15, 5);
         private Save _save;
         private List<People> _peoples;
-        private List<CustomCheckBox<People>> _checkBoxes;
 
         public List<People> Peoples
         {
@@ -37,13 +36,6 @@ namespace ClubTennis.Views
             set
             {
                 this._peoples = value;
-            }
-        }
-        public List<CustomCheckBox<People>> CheckBoxes
-        {
-            get
-            {
-                return this._checkBoxes;
             }
         }
 
@@ -65,18 +57,17 @@ namespace ClubTennis.Views
         {
             this._save = save;
             InitializeComponent();
-            this._checkBoxes = new List<CustomCheckBox<People>>();
             InitializeList(peoples);
         }
         private void InitializeList(List<People> peoples)
         {
-            ContentStackPanel.Children.Clear();
-            foreach(People people in peoples)
+            ContentStackPanel.Children.Clear(); //on clear toutes les infos qu'il y a dans le stackpanel
+            foreach(People people in peoples) //pour chaque membre et employés 
             {
-                if (people.GetType() == PostEnum.Member)
+                if (people.GetType() == PostEnum.Member) 
                 {
-                    Grid grid = GetMainGrid(people);
-                    ContentStackPanel.Children.Add(grid);
+                    Grid grid = GetMainGrid(people); //une ligne pour un membre
+                    ContentStackPanel.Children.Add(grid); //on l'ajoute 
                 }
             }
             this._peoples = peoples;
@@ -87,9 +78,9 @@ namespace ClubTennis.Views
             Thickness defaultMargin = new Thickness(1, 0, 1, 0);
             Grid grid = new Grid()
             {
-                MinHeight = 30,
+                MinHeight = 30, //hauteur minimum
                 ColumnDefinitions =
-                    {
+                    { // on crée la grille d'affichage des membres
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
@@ -108,6 +99,7 @@ namespace ClubTennis.Views
             //};
             //this._checkBoxes.Add(checkBox);
 
+            //On crée chaque grid contenant chaque attribut de membre
             Grid name = GetGridText(people.LastName, defaultMargin);
 
             Grid phone = GetGridText(people.PhoneNumber, defaultMargin);
@@ -122,7 +114,7 @@ namespace ClubTennis.Views
 
             Grid menu = GetGrid(people);
 
-            //grid.Children.Add(checkBox);
+            //les données sont affichées mais au meme endroit seulement
             grid.Children.Add(name);
             grid.Children.Add(phone);
             grid.Children.Add(age);
@@ -131,7 +123,7 @@ namespace ClubTennis.Views
             grid.Children.Add(classement);
             grid.Children.Add(menu);
 
-            //Grid.SetColumn(checkBox, 0);
+            //on les met dans chaque colonne attribuée ici
             Grid.SetColumn(name, 0);
             Grid.SetColumn(phone, 1);
             Grid.SetColumn(age, 2);

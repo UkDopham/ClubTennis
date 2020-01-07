@@ -269,7 +269,7 @@ namespace ClubTennis.Views
 
         private void NewButtonClick(object sender, RoutedEventArgs e)
         {
-            CreationWindows newWindows = new CreationWindows(this._memberVM.Save)
+            CreationWindows newWindows = new CreationWindows(this._memberVM.Save) //on importe la sauvegarde pour la modifier dans la fonction
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };

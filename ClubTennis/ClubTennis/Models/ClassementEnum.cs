@@ -58,7 +58,7 @@ namespace ClubTennis.Models
         [Description("3/6")]
         troissix,
 
-        [Description("N1/6")]
+        [Description("1/6")]
         unsix,
 
         [Description("0")]

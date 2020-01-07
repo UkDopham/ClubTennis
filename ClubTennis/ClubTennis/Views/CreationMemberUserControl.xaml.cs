@@ -1,4 +1,5 @@
 ﻿using ClubTennis.Models;
+using ClubTennis.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,14 +34,16 @@ namespace ClubTennis.Views
         public CreationMemberUserControl()
         {
             InitializeComponent();
-            ClassementComboBox.ItemsSource = Enum.GetValues(typeof(ClassementEnum));
+
+            ClassementComboBox.ItemsSource = ((IEnumerable<ClassementEnum>)Enum.GetValues(typeof(ClassementEnum))).Select(x => EnumHelper.GetDescription(x)); 
             ClassementComboBox.SelectedIndex = 0;
         }
+
         public CreationMemberUserControl(Member member)
         {
             this._guid = member.Guid;
             InitializeComponent();
-            ClassementComboBox.ItemsSource = Enum.GetValues(typeof(ClassementEnum));
+            ClassementComboBox.ItemsSource = ((IEnumerable<ClassementEnum>)Enum.GetValues(typeof(ClassementEnum))).Select(x => EnumHelper.GetDescription(x));
             PrenomTextBox.Text = member.FirstName;
             NomTextBox.Text = member.LastName;
             PhoneTextBox.Text = member.PhoneNumber;
