@@ -23,6 +23,7 @@ namespace ClubTennis.Views
     /// </summary>
     public partial class MemberListUserControl : UserControl, ISave
     {
+        private Thickness MARGINENUMCOLOR = new Thickness(15, 5, 15, 5);
         private Save _save;
         private List<People> _peoples;
         private List<CustomCheckBox<People>> _checkBoxes;
@@ -86,6 +87,7 @@ namespace ClubTennis.Views
             Thickness defaultMargin = new Thickness(1, 0, 1, 0);
             Grid grid = new Grid()
             {
+                MinHeight = 30,
                 ColumnDefinitions =
                     {
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
@@ -106,17 +108,17 @@ namespace ClubTennis.Views
             //};
             //this._checkBoxes.Add(checkBox);
 
-            TextBlock name = GetTextBlock(people.LastName, defaultMargin);
+            Grid name = GetGridText(people.LastName, defaultMargin);
 
-            TextBlock phone = GetTextBlock(people.PhoneNumber, defaultMargin);
+            Grid phone = GetGridText(people.PhoneNumber, defaultMargin);
 
-            TextBlock age = GetTextBlock((DateTime.Now.Year - people.Birthdate.Year).ToString(), defaultMargin);
+            Grid age = GetGridText((DateTime.Now.Year - people.Birthdate.Year).ToString(), defaultMargin);
 
-            TextBlock statut = GetTextBlock(((Member)people).HasPaid.ToString(), defaultMargin);//TODO CONVERTER
+            Grid statut = GetGridText(((Member)people).HasPaid.ToString(), defaultMargin);//TODO CONVERTER
 
-            TextBlock gender = GetTextBlock(EnumHelper.GetDescription(people.Gender), defaultMargin);
+            Grid gender = GetGenderGridText(EnumHelper.GetDescription(people.Gender), people.Gender);
 
-            TextBlock classement = GetTextBlock(((Member)people).Classement.ToString(), defaultMargin);
+            Grid classement = GetGridText(EnumHelper.GetDescription(((Member)people).Classement), defaultMargin);
 
             Grid menu = GetGrid(people);
 
@@ -145,7 +147,8 @@ namespace ClubTennis.Views
         {
             Grid grid = new Grid()
             {
-                Margin = new Thickness(50,1,50,1),
+                Margin = new Thickness(0.5, 1, 0.5, 1),
+                Background = new SolidColorBrush(Colors.White),
                 ColumnDefinitions =
                     {
                         new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
@@ -155,11 +158,11 @@ namespace ClubTennis.Views
 
             Button change = new Button()
             {
-                Background = new SolidColorBrush(Colors.Green),
+                Background = SolidColorBrushHelper.LightGreen(),
                 BorderThickness = new Thickness(0),
-                MaxHeight = 15,
-                MaxWidth = 15,
-                Margin = new Thickness(5)
+                Margin = MARGINENUMCOLOR,
+                Content = GetTextBlock("Modifier", new Thickness(0)),
+                Foreground = new SolidColorBrush(Colors.White),
             };
 
             change.Click += (s, e) =>
@@ -169,18 +172,18 @@ namespace ClubTennis.Views
                     WindowStartupLocation = WindowStartupLocation.CenterScreen
                 };
                 newWindows.ShowDialog();
-                //this._save = newWindows.Save;
+                //Save = newWindows.CreationVM.Save;
 
                 InitializeList(this._save.Peoples);
             };
 
             Button delet = new Button()
             {
-                Background = new SolidColorBrush(Colors.Red),
+                Background = SolidColorBrushHelper.Red(),
                 BorderThickness = new Thickness(0),
-                MaxHeight = 15,
-                MaxWidth = 15,
-                Margin = new Thickness(5)
+                Margin = MARGINENUMCOLOR,
+                Content = GetTextBlock("Supprimer", new Thickness(0)),
+                Foreground = new SolidColorBrush(Colors.White),
             };
 
             delet.Click += (s, e) =>
@@ -190,6 +193,7 @@ namespace ClubTennis.Views
                 this._save.Peoples.Remove(people);
                 data.AddSave(this._save);
 
+                //Save = this._save;
                 data.Write();
                 InitializeList(this._save.Peoples);
             };
@@ -201,6 +205,18 @@ namespace ClubTennis.Views
             Grid.SetColumn(delet, 1);
 
             return grid;
+        }
+        private Grid GetGridText(string text, Thickness margin)
+        {
+            return new Grid()
+            {
+                Background = new SolidColorBrush(Colors.White),
+                Margin = new Thickness(0.5,1,0.5,1),
+                Children =
+                {
+                    GetTextBlock(text, margin)
+                }
+            };
         }
         private TextBlock GetTextBlock(string text, Thickness margin)
         {
@@ -214,6 +230,62 @@ namespace ClubTennis.Views
             };
         }
 
+        private Grid GetGenderGridText(string text, GenderEnum genderEnum)
+        {
+            return new Grid()
+            {
+                Background = new SolidColorBrush(Colors.White),
+                Margin = new Thickness(0.5, 1, 0.5, 1),
+                Children =
+                {
+                    GetGenderGrid(text, genderEnum)
+                }
+            };
+        }
+        private Grid GetGenderGrid(string text, GenderEnum genderEnum)
+        {
+            return new Grid()
+            {
+                Background = GenderBackGround(genderEnum),
+                Margin = MARGINENUMCOLOR,
+                Children =
+                {
+                    GetGenderTextBlock(text, genderEnum)
+                }
+            };
+        }
+        private TextBlock GetGenderTextBlock(string text, GenderEnum genderEnum)
+        {
+            return new TextBlock()
+            {
+                Text = text,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Foreground = new SolidColorBrush(Colors.White),
+                FontSize = 15,
+            };
+        }
+
+        private SolidColorBrush GenderBackGround(GenderEnum genderEnum)
+        {
+            SolidColorBrush solidColor = new SolidColorBrush();
+
+            switch(genderEnum)
+            {
+                case GenderEnum.man:
+                    solidColor = SolidColorBrushHelper.Blue();
+                    break;
+
+                case GenderEnum.woman:
+                    solidColor = SolidColorBrushHelper.Red();
+                    break;
+
+                case GenderEnum.other:
+                    solidColor = SolidColorBrushHelper.LightGreen();
+                    break;
+            }
+            return solidColor;
+        }
         private void CheckBoxClick(object sender, RoutedEventArgs e)
         {
             //foreach(CustomCheckBox<People> customCheckBox in this._checkBoxes)

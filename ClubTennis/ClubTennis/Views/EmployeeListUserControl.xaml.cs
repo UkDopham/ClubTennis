@@ -85,6 +85,7 @@ namespace ClubTennis.Views
             Thickness defaultMargin = new Thickness(1, 0, 1, 0);
             Grid grid = new Grid()
             {
+                MinHeight = 30,
                 ColumnDefinitions =
                     {
                         new ColumnDefinition{ Width = new GridLength(2, GridUnitType.Star)},
@@ -109,23 +110,23 @@ namespace ClubTennis.Views
             //this._checkBoxes.Add(checkBox);
 
 
-            TextBlock name = GetTextBlock(people.LastName, defaultMargin);
+            Grid name = GetGridText(people.LastName, defaultMargin);
 
-            TextBlock phone = GetTextBlock(people.PhoneNumber, defaultMargin);
+            Grid phone = GetGridText(people.PhoneNumber, defaultMargin);
 
-            TextBlock age = GetTextBlock((DateTime.Now.Year - people.Birthdate.Year).ToString(), defaultMargin);
+            Grid age = GetGridText((DateTime.Now.Year - people.Birthdate.Year).ToString(), defaultMargin);
 
-            TextBlock post = GetTextBlock(people.GetType().ToString(), defaultMargin);//TODO CONVERTER
+            Grid post = GetGridText(EnumHelper.GetDescription(people.GetType()), defaultMargin);
 
-            TextBlock gender = GetTextBlock(EnumHelper.GetDescription(people.Gender), defaultMargin);
+            Grid gender = GetGridText(EnumHelper.GetDescription(people.Gender), defaultMargin);
 
-            TextBlock salary = GetTextBlock(((IEmployee)people).Salary.ToString(), defaultMargin);
+            Grid salary = GetGridText(((IEmployee)people).Salary.ToString(), defaultMargin);
 
-            TextBlock date = GetTextBlock(((IEmployee)people).EntryDate.ToString("d"), defaultMargin);
+            Grid date = GetGridText(((IEmployee)people).EntryDate.ToString("d"), defaultMargin);
 
-            TextBlock rib = GetTextBlock(((IEmployee)people).BankDetails?.Rib, defaultMargin);
+            Grid rib = GetGridText(((IEmployee)people).BankDetails?.Rib, defaultMargin);
 
-            TextBlock iban = GetTextBlock(((IEmployee)people).BankDetails?.Iban, defaultMargin);
+            Grid iban = GetGridText(((IEmployee)people).BankDetails?.Iban, defaultMargin);
 
             Grid menu = GetGrid(people);
 
@@ -160,7 +161,8 @@ namespace ClubTennis.Views
         {
             Grid grid = new Grid()
             {
-                Margin = new Thickness(50, 1, 50, 1),
+                Margin = new Thickness(1),
+                Background = new SolidColorBrush(Colors.White),
                 ColumnDefinitions =
                     {
                         new ColumnDefinition{ Width = new GridLength(1, GridUnitType.Star)},
@@ -217,13 +219,30 @@ namespace ClubTennis.Views
 
             return grid;
         }
+        private Grid GetGridText(string text, Thickness margin)
+        {
+            return new Grid()
+            {
+                Background = new SolidColorBrush(Colors.White),
+                Margin = new Thickness(0.5, 1, 0.5, 1),
+                Children =
+                {
+                    GetTextBlock(text, margin)
+                }
+            };
+        }
         private TextBlock GetTextBlock(string text, Thickness margin)
         {
+            Grid grid = new Grid()
+            {
+                Background = new SolidColorBrush(Colors.White),
+                Margin = new Thickness(0.5, 1, 0.5, 1),
+            };
             return new TextBlock()
             {
                 Text = text,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,                
                 FontSize = 15,
                 Margin = margin
             };

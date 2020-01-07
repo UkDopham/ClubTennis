@@ -14,7 +14,6 @@ namespace ClubTennis.ViewModels
     {
         private ISave _selectedUserControl;
         private Save _save;
-        private List<People> _peoples; 
         private List<Filter> _activeFilters;
 
         public void AddFilter(Filter filter)
@@ -55,12 +54,11 @@ namespace ClubTennis.ViewModels
         public MemberVM(Save save)
         {
             this._save = save;
-            this._peoples = save.Peoples;
             this._activeFilters = new List<Filter>();
         }
         public List<People> Sort()
         {
-            List<People> peoples = this._peoples;
+            List<People> peoples = this._save.Peoples;
             foreach (Filter filter in this._activeFilters)
             {
                 peoples = filter.Order(peoples);

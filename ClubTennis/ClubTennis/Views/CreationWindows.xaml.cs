@@ -23,6 +23,17 @@ namespace ClubTennis.Views
     {
         private CreationVM _creationVM;
 
+        public CreationVM CreationVM
+        {
+            get
+            {
+                return this._creationVM;
+            }
+            set
+            {
+                this._creationVM = value;
+            }
+        }
         private bool _isMember;
         private bool _isNew;
 

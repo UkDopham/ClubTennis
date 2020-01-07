@@ -146,7 +146,6 @@ namespace ClubTennis.Views
                 this._memberVM.RemoveFilter(filter);
             }
 
-
             this._memberVM.SelectedUserControl = new MemberListUserControl(this._memberVM.Sort(), this._memberVM.Save);
         }
         /// <summary>

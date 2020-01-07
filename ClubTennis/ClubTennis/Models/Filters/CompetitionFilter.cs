@@ -10,8 +10,7 @@ namespace ClubTennis.Models.Filters
     {
         public override List<People> Order(List<People> peoples)
         {
-            List<People> tmp = new List<People>();
-            peoples.ForEach(x => tmp.Add(x));
+            List<People> tmp = peoples.Where(x => x.GetType() == PostEnum.Member).ToList();
             tmp.Sort((x, y) => ((Member)x).Classement.CompareTo(((Member)y).Classement));
 
             return tmp;
