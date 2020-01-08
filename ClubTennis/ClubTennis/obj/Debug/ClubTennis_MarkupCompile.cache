@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\
 ClubTennis
 none
 false
 DEBUG;TRACE
-C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\App.xaml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\App.xaml
 11-876423859
 
-62-431310802
+63-687226731
 151397803362
 MainWindow.xaml;Views\CreationEmployeeUserControl.xaml;Views\CreationMemberUserControl.xaml;Views\CreationWindows.xaml;Views\EmployeeListUserControl.xaml;Views\LoginUserControl.xaml;Views\MemberListUserControl.xaml;Views\MemberUserControl.xaml;Views\MenuUserControl.xaml;Views\StatsUserControl.xaml;Views\TournamentUserControl.xaml;
 
-False
+True
 
