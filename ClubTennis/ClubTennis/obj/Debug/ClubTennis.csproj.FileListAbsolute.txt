@@ -171,3 +171,5 @@ C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\Cl
 C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\ClubTennis.pdb
 C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\Views\CreationTournoi.g.cs
 C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\Views\CreationTournoi.baml
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationTournoi.g.cs
+D:\Programmation\Tennis\ClubTennis\ClubTennis\obj\Debug\Views\CreationTournoi.baml
