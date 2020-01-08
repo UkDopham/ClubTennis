@@ -40,5 +40,10 @@ namespace ClubTennis.Views
                 this._save = value;
             }
         }
+
+        private void NewCompet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

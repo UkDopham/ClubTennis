@@ -130,7 +130,7 @@
                   Margin="10"
                   VerticalContentAlignment="Center"
                   HorizontalContentAlignment="Center"
-                      x:Name="GenreComboBox">
+                      x:Name="GenreComboBox" SelectionChanged="GenreComboBox_SelectionChanged">
                 <ComboBoxItem IsSelected="True">
                     Homme
                 </ComboBoxItem>

@@ -76,6 +76,7 @@
     <Compile Include="Models\Filters\SearchFilter.cs" />
     <Compile Include="Models\IEmployee.cs" />
     <Compile Include="Models\Internship.cs" />
+    <Compile Include="Models\LevelEnum.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\PaymentEnum.cs" />
@@ -97,6 +98,9 @@
     </Compile>
     <Compile Include="Views\CreationMemberUserControl.xaml.cs">
       <DependentUpon>CreationMemberUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreationTournoi.xaml.cs">
+      <DependentUpon>CreationTournoi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreationWindows.xaml.cs">
       <DependentUpon>CreationWindows.xaml</DependentUpon>
@@ -148,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreationMemberUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreationTournoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

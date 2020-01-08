@@ -169,3 +169,5 @@ C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\Cl
 C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\ClubTennis.csproj.GenerateResource.cache
 C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\ClubTennis.exe
 C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\ClubTennis.pdb
+C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\Views\CreationTournoi.g.cs
+C:\Users\Utilisateur\OneDrive - De Vinci\A3\S5\POO\#ProjetSemestre\ClubTennis\ClubTennis\obj\Debug\Views\CreationTournoi.baml
