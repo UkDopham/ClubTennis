@@ -24,6 +24,6 @@ In order to run the programm you need to have .NET Framework on your machine.
 
 ## Contact 
 
-**Alexandre DO PHAM** https://www.linkedin.com/in/alexandredopham/
-**Gabriel Shenouda** https://www.linkedin.com/in/gabriel-shenouda-80148a166/
+* [Alexandre DO PHAM](https://www.linkedin.com/in/alexandredopham/) Developper 
+* [Gabriel Shenouda](https://www.linkedin.com/in/gabriel-shenouda-80148a166/) Developper
 
